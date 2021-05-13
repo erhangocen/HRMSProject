@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jobpositions")
+@RequestMapping("/api/jobpositions/")
 public class JobPositionsController {
 
     private final IJobPositionService _jobPositionService;
@@ -20,7 +20,7 @@ public class JobPositionsController {
         this._jobPositionService = _jobPositionService;
     }
 
-    @GetMapping("/getall")
+    @GetMapping("getall")
     public List<JobPosition> getAll(){
         return _jobPositionService.getAll();
     }
