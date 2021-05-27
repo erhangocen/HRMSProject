@@ -31,6 +31,6 @@ public class JobPositionManager implements IJobPositionService {
 
     @Override
     public DataResult<List<JobPosition>> getAll() {
-        return new SuccessDataResult<List<JobPosition>>(_jobPositionDao.findAll(),"job positions listed");
+        return new SuccessDataResult<List<JobPosition>>(_jobPositionDao.findAll());
     }
 }
