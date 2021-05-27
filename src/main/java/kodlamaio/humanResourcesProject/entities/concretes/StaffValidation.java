@@ -1,6 +1,5 @@
 package kodlamaio.humanResourcesProject.entities.concretes;
 
-import kodlamaio.humanResourcesProject.entities.abstracts.IEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,14 +10,21 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "job_positions")
-public class JobPosition implements IEntity {
+@Table(name = "staff_validations")
+public class StaffValidation {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "position_name")
-    private String positionName;
+    @Column(name = "employer_id")
+    private int employerId;
+
+    @Column(name = "system_user_id")
+    private int systemUserId;
+
+    @Column(name = "is_valid")
+    private boolean isValid;
 
 }

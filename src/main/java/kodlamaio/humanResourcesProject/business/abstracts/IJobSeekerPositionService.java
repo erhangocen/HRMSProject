@@ -2,13 +2,13 @@ package kodlamaio.humanResourcesProject.business.abstracts;
 
 import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
-import kodlamaio.humanResourcesProject.entities.concretes.JobPosition;
+import kodlamaio.humanResourcesProject.entities.concretes.JobSeekerPosition;
 
 import java.util.List;
 
-public interface IJobPositionService {
+public interface IJobSeekerPositionService {
 
-    Result add(JobPosition jobPosition);
-    DataResult<List<JobPosition>> getAll();
+    Result add(JobSeekerPosition jobSeekerPosition);
+    DataResult<List<JobSeekerPosition>> getAll();
 
 }

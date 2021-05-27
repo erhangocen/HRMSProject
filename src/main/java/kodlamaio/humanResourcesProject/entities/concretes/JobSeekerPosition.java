@@ -3,22 +3,27 @@ package kodlamaio.humanResourcesProject.entities.concretes;
 import kodlamaio.humanResourcesProject.entities.abstracts.IEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-@NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
-@Table(name = "job_positions")
-public class JobPosition implements IEntity {
+@NoArgsConstructor
+@Table(name = "job_seeker_positions")
+public class JobSeekerPosition implements IEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "position_name")
-    private String positionName;
+    @Column(name = "job_seeker_id")
+    private int jobSeekerId;
 
+    @Column(name = "job_position_id")
+    private int jobPositionId;
 }

@@ -2,13 +2,13 @@ package kodlamaio.humanResourcesProject.business.abstracts;
 
 import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
-import kodlamaio.humanResourcesProject.entities.concretes.JobPosition;
+import kodlamaio.humanResourcesProject.entities.concretes.StaffValidation;
 
 import java.util.List;
 
-public interface IJobPositionService {
+public interface IStaffValidationService {
 
-    Result add(JobPosition jobPosition);
-    DataResult<List<JobPosition>> getAll();
+    Result add(StaffValidation staffValidation);
+    DataResult<List<StaffValidation>> getAll();
 
 }
