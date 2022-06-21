@@ -1,5 +1,5 @@
 
-## AYT'den çıktıktan sonra koşa koşa gelip...
+## AYT'den çıktıktan sonra koşa koşa gelip bitireceğim...
 
 # Proje Kodları: <a style="text-decoration:none" href="https://github.com/deveross/HRMSProject/tree/master/src/main/java/kodlamaio/humanResourcesProject">Src > Main > Java </a>
 
