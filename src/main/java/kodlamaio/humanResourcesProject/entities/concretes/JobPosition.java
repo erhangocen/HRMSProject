@@ -1,6 +1,5 @@
 package kodlamaio.humanResourcesProject.entities.concretes;
 
-import kodlamaio.humanResourcesProject.entities.abstracts.IEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "job_positions")
-public class JobPosition implements IEntity {
+public class JobPosition {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

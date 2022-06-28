@@ -9,6 +9,9 @@ import java.util.List;
 public interface IEmployerService {
 
     Result add(Employer employer);
+    Result update(Employer employer);
     DataResult<List<Employer>> getAll();
 
+    Result checkEmployerEmail(Employer employer);
+    Result nullController(Employer employer);
 }

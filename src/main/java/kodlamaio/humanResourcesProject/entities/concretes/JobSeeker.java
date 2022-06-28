@@ -1,6 +1,5 @@
 package kodlamaio.humanResourcesProject.entities.concretes;
 
-import kodlamaio.humanResourcesProject.entities.abstracts.IEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -10,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
-import javax.xml.transform.sax.SAXResult;
 
 @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id")
 @Data
@@ -19,7 +17,7 @@ import javax.xml.transform.sax.SAXResult;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "job_seeker")
-public class JobSeeker extends User implements IEntity {
+public class JobSeeker extends User {
 
     @Column(name = "first_name")
     private String firstName;

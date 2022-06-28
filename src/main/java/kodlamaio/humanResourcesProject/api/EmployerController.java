@@ -4,6 +4,7 @@ import kodlamaio.humanResourcesProject.business.abstracts.IEmployerService;
 import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.Employer;
+import kodlamaio.humanResourcesProject.entities.concretes.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,5 +29,10 @@ public class EmployerController {
     @PostMapping("add")
     public Result add(@RequestBody Employer employer){
         return _employerService.add(employer);
+    }
+
+    @PostMapping("update")
+    public Result update(@RequestBody Employer employer){
+        return _employerService.update(employer);
     }
 }

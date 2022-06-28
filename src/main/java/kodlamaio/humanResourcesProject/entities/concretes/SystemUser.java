@@ -1,7 +1,5 @@
 package kodlamaio.humanResourcesProject.entities.concretes;
 
-import kodlamaio.humanResourcesProject.entities.abstracts.IEntity;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -16,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @NoArgsConstructor
 @Table(name = "system_users")
-public class SystemUser extends User implements IEntity {
+public class SystemUser extends User {
 
     public SystemUser(String email, String password) {
         super(email, password);
