@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-@PrimaryKeyJoinColumn(name = "user_id")
+@PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id")
 @Data
 @EqualsAndHashCode(callSuper=false)
 @Entity
@@ -25,10 +25,4 @@ public class Employer extends User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    public Employer(String email, String password, String companyName, String webAddress, String phoneNumber) {
-        super(email, password);
-        this.companyName = companyName;
-        this.webAddress = webAddress;
-        this.phoneNumber = phoneNumber;
-    }
 }

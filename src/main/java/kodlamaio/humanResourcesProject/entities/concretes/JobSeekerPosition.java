@@ -12,7 +12,7 @@ import javax.persistence.*;
 @EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "job_seeker_positions")
+@Table(name = "job_seekers_positions")
 public class JobSeekerPosition {
 
     @Id

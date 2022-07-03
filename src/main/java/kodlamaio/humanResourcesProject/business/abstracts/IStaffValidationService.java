@@ -9,6 +9,7 @@ import java.util.List;
 public interface IStaffValidationService {
 
     Result add(StaffValidation staffValidation);
+    Result update(StaffValidation staffValidation);
     DataResult<List<StaffValidation>> getAll();
 
 }

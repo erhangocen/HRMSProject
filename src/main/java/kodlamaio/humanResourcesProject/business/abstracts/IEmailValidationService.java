@@ -2,12 +2,11 @@ package kodlamaio.humanResourcesProject.business.abstracts;
 
 import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
-import kodlamaio.humanResourcesProject.entities.concretes.SystemUser;
-import org.w3c.dom.ls.LSInput;
+import kodlamaio.humanResourcesProject.entities.concretes.EmailValidation;
 
 import java.util.List;
 
-public interface ISystemUserService {
-    Result add(SystemUser systemUser);
-    DataResult<List<SystemUser>> getAll();
+public interface IEmailValidationService {
+    Result add(EmailValidation emailValidation);
+    DataResult<List<EmailValidation>> getAll();
 }

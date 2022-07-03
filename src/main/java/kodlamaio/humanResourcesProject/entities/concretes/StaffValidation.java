@@ -1,5 +1,6 @@
 package kodlamaio.humanResourcesProject.entities.concretes;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "staff_validations")
+@Table(name = "staff_validation")
 public class StaffValidation {
 
     @Id

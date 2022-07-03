@@ -7,6 +7,6 @@ import kodlamaio.humanResourcesProject.entities.concretes.JobSeeker;
 import java.util.List;
 
 public interface IJobSeekerService {
-    Result add(JobSeeker jobSeeker);
+    Result add(JobSeeker jobSeeker) throws Exception;
     DataResult<List<JobSeeker>> getAll();
 }

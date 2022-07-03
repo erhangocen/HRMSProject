@@ -28,7 +28,7 @@ public class UserManager implements IUserService {
 
     @Override
     public DataResult<List<User>> getAllUser() {
-        return null;
+        return new SuccessDataResult<List<User>>(_userDao.findAll());
     }
 
     @Override
@@ -45,4 +45,5 @@ public class UserManager implements IUserService {
         _emailValidationDao.save(emailValidation);
         return new SuccessResult();
     }
+
 }

@@ -16,8 +16,4 @@ import javax.persistence.Table;
 @Table(name = "system_users")
 public class SystemUser extends User {
 
-    public SystemUser(String email, String password) {
-        super(email, password);
-    }
-
 }

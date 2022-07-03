@@ -5,15 +5,13 @@ import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeeker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
-@RequestMapping("/jobseekers/")
+@RequestMapping("/api/jobseekers/")
 public class JobSeekerController {
 
     private IJobSeekerService _jobSeekerService;
@@ -29,7 +27,7 @@ public class JobSeekerController {
     }
 
     @PostMapping("add")
-    public Result add(JobSeeker jobSeeker){
+    public Result add(JobSeeker jobSeeker) throws Exception{
         return _jobSeekerService.add(jobSeeker);
     }
 }

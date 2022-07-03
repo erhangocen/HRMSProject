@@ -30,7 +30,15 @@ public class StaffValidationManager implements IStaffValidationService {
     }
 
     @Override
+    public Result update(StaffValidation staffValidation) {
+        _staffValidationDao.save(staffValidation);
+        return new SuccessResult();
+    }
+
+    @Override
     public DataResult<List<StaffValidation>> getAll() {
         return new SuccessDataResult<List<StaffValidation>>(_staffValidationDao.findAll());
     }
+
+
 }

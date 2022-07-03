@@ -12,6 +12,4 @@ public interface IEmployerService {
     Result update(Employer employer);
     DataResult<List<Employer>> getAll();
 
-    Result checkEmployerEmail(Employer employer);
-    Result nullController(Employer employer);
 }

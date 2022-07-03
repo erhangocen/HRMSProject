@@ -23,7 +23,7 @@ public class SystemUserController {
         this._systemUserService = _systemUserService;
     }
 
-    @GetMapping("getall")
+    @GetMapping("getAll")
     public DataResult<List<SystemUser>> getAll(){
         return _systemUserService.getAll();
     }
