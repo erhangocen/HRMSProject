@@ -47,7 +47,7 @@ public class JobPositionManager implements IJobPositionService {
 
     @Override
     public DataResult<List<JobPosition>> getAll() {
-        return new SuccessDataResult<List<JobPosition>>(_jobPositionDao.findAll());
+        return new SuccessDataResult<List<JobPosition>>(_jobPositionDao.findAll(),"Positions listed");
     }
 
     private Result checkJobPositionName(JobPosition jobPosition){
@@ -56,5 +56,11 @@ public class JobPositionManager implements IJobPositionService {
             return new SuccessResult();
         }
         return new ErrorResult("this position already exist");
+    }
+
+    @Override
+    public Result delete(JobPosition jobPosition){
+        _jobPositionDao.delete(jobPosition);
+        return new SuccessResult();
     }
 }

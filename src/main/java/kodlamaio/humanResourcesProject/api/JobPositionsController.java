@@ -31,4 +31,8 @@ public class JobPositionsController {
         return _jobPositionService.add(jobPosition);
     }
 
+    @PostMapping("delete")
+    public Result delete(@RequestBody JobPosition jobPosition){
+        return _jobPositionService.delete(jobPosition);
+    }
 }
