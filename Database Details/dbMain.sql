@@ -3,97 +3,243 @@
 BEGIN;
 
 
-CREATE TABLE public.email_validation
+CREATE TABLE IF NOT EXISTS public.cities
 (
-    id integer NOT NULL,
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    city_name character varying COLLATE pg_catalog."default" NOT NULL,
+    country_name character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT cities_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.email_validation
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     user_id integer NOT NULL,
     is_valid boolean NOT NULL,
-    PRIMARY KEY (id)
+    CONSTRAINT email_validation_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE public.employers
+CREATE TABLE IF NOT EXISTS public.employers
 (
     user_id integer NOT NULL,
-    company_name character varying(50) NOT NULL,
-    web_address character varying NOT NULL,
-    phone_number character varying NOT NULL,
-    PRIMARY KEY (user_id)
+    company_name character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    web_address character varying COLLATE pg_catalog."default" NOT NULL,
+    phone_number character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT employers_pkey PRIMARY KEY (user_id)
 );
 
-CREATE TABLE public.job_positions
+CREATE TABLE IF NOT EXISTS public.job_advertisements
 (
-    id integer NOT NULL,
-    position_name character varying NOT NULL,
-    PRIMARY KEY (id)
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    title character varying COLLATE pg_catalog."default" NOT NULL,
+    description character varying COLLATE pg_catalog."default" NOT NULL,
+    min_salary integer NOT NULL,
+    max_salary integer NOT NULL,
+    application_deadline date NOT NULL,
+    release_date date NOT NULL,
+    is_active boolean NOT NULL,
+    city_id integer NOT NULL,
+    employer_id integer NOT NULL,
+    job_position_id integer NOT NULL,
+    open_position_count integer NOT NULL,
+    CONSTRAINT job_advertisements_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE public.job_seekers
+CREATE TABLE IF NOT EXISTS public.job_advertisements_require_skills
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    job_advertisements_id integer NOT NULL,
+    skill_id integer NOT NULL,
+    CONSTRAINT job_advertisements_require_skills_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.job_positions
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    position_name character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT job_positions_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.job_seekers
 (
     user_id integer NOT NULL,
-    first_name character varying(20) NOT NULL,
-    last_name character varying(20) NOT NULL,
-    national_id character varying(11) NOT NULL,
-    birth_year date NOT NULL,
-    PRIMARY KEY (user_id)
+    first_name character varying COLLATE pg_catalog."default" NOT NULL,
+    last_name character varying COLLATE pg_catalog."default" NOT NULL,
+    national_id character varying COLLATE pg_catalog."default" NOT NULL,
+    birth_year character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT job_seekers_pkey PRIMARY KEY (user_id)
 );
 
-CREATE TABLE public.job_seekers_positions
+CREATE TABLE IF NOT EXISTS public.job_seekers_positions
 (
-    id integer NOT NULL,
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     job_seeker_id integer NOT NULL,
     job_position_id integer NOT NULL,
-    PRIMARY KEY (id)
+    CONSTRAINT job_seekers_positions_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE public.staff_validation
+CREATE TABLE IF NOT EXISTS public.job_seekers_skills
 (
-    id integer NOT NULL,
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    job_seeker_id integer NOT NULL,
+    skill_id integer NOT NULL,
+    CONSTRAINT job_seekers_skills_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.skills
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    skill_name character varying COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT skills_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.staff_validation
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
     employer_id integer NOT NULL,
     is_valid boolean NOT NULL,
-    PRIMARY KEY (id)
+    system_user_id integer,
+    CONSTRAINT staff_validation_pkey PRIMARY KEY (id)
 );
 
-CREATE TABLE public.users
+CREATE TABLE IF NOT EXISTS public.system_users
 (
     user_id integer NOT NULL,
-    email character varying(50) NOT NULL,
-    password character varying(50) NOT NULL,
-    PRIMARY KEY (user_id)
+    CONSTRAINT system_users_pkey PRIMARY KEY (user_id)
 );
 
-ALTER TABLE public.email_validation
-    ADD FOREIGN KEY (user_id)
-    REFERENCES public.users (user_id)
+CREATE TABLE IF NOT EXISTS public.users
+(
+    user_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    email character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    password character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT users_pkey PRIMARY KEY (user_id)
+);
+
+ALTER TABLE IF EXISTS public.email_validation
+    ADD CONSTRAINT email_validation_user_id_fkey FOREIGN KEY (user_id)
+    REFERENCES public.users (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
     NOT VALID;
 
 
-ALTER TABLE public.employers
-    ADD FOREIGN KEY (user_id)
-    REFERENCES public.users (user_id)
+ALTER TABLE IF EXISTS public.employers
+    ADD CONSTRAINT employers_user_id_fkey FOREIGN KEY (user_id)
+    REFERENCES public.users (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS employers_pkey
+    ON public.employers(user_id);
+
+
+ALTER TABLE IF EXISTS public.job_advertisements
+    ADD CONSTRAINT job_advertisements_city_id_fkey FOREIGN KEY (city_id)
+    REFERENCES public.cities (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS fki_job_advertisements_city_id_fkey
+    ON public.job_advertisements(city_id);
+
+
+ALTER TABLE IF EXISTS public.job_advertisements
+    ADD CONSTRAINT job_advertisements_employer_id_fkey FOREIGN KEY (employer_id)
+    REFERENCES public.employers (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS fki_job_advertisements_employer_id_fkey
+    ON public.job_advertisements(employer_id);
+
+
+ALTER TABLE IF EXISTS public.job_advertisements
+    ADD CONSTRAINT job_advertisements_job_position_id_fkey FOREIGN KEY (job_position_id)
+    REFERENCES public.job_positions (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS fki_job_advertisements_job_position_id_fkey
+    ON public.job_advertisements(job_position_id);
+
+
+ALTER TABLE IF EXISTS public.job_advertisements_require_skills
+    ADD CONSTRAINT job_advertisements_required_skills_job_advertisements_id_fkey FOREIGN KEY (job_advertisements_id)
+    REFERENCES public.job_advertisements (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
     NOT VALID;
 
 
-ALTER TABLE public.job_seekers
-    ADD FOREIGN KEY (user_id)
-    REFERENCES public.users (user_id)
+ALTER TABLE IF EXISTS public.job_advertisements_require_skills
+    ADD CONSTRAINT job_advertisements_required_skills_skill_id_fkey FOREIGN KEY (skill_id)
+    REFERENCES public.skills (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
     NOT VALID;
 
 
-ALTER TABLE public.job_seekers_positions
-    ADD FOREIGN KEY (job_position_id)
-    REFERENCES public.job_positions (id)
+ALTER TABLE IF EXISTS public.job_seekers
+    ADD CONSTRAINT job_seekers_user_id_fkey FOREIGN KEY (user_id)
+    REFERENCES public.users (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS job_seekers_pkey
+    ON public.job_seekers(user_id);
+
+
+ALTER TABLE IF EXISTS public.job_seekers_positions
+    ADD CONSTRAINT job_seekers_positions_job_position_id_fkey FOREIGN KEY (job_position_id)
+    REFERENCES public.job_positions (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
     NOT VALID;
 
 
-ALTER TABLE public.job_seekers_positions
-    ADD FOREIGN KEY (job_seeker_id)
-    REFERENCES public.job_seekers (user_id)
+ALTER TABLE IF EXISTS public.job_seekers_positions
+    ADD CONSTRAINT job_seekers_positions_job_seeker_id_fkey FOREIGN KEY (job_seeker_id)
+    REFERENCES public.job_seekers (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
     NOT VALID;
 
 
-ALTER TABLE public.staff_validation
-    ADD FOREIGN KEY (employer_id)
-    REFERENCES public.employers (user_id)
+ALTER TABLE IF EXISTS public.job_seekers_skills
+    ADD CONSTRAINT job_seekers_skills_job_seeker_id_fkey FOREIGN KEY (job_seeker_id)
+    REFERENCES public.job_seekers (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
     NOT VALID;
+CREATE INDEX IF NOT EXISTS fki_job_seekers_skills_job_seeker_id_fkey
+    ON public.job_seekers_skills(job_seeker_id);
+
+
+ALTER TABLE IF EXISTS public.job_seekers_skills
+    ADD CONSTRAINT job_seekers_skills_skill_id_fkey FOREIGN KEY (skill_id)
+    REFERENCES public.skills (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+CREATE INDEX IF NOT EXISTS fki_job_seekers_skills_skill_id_fkey
+    ON public.job_seekers_skills(skill_id);
+
+
+ALTER TABLE IF EXISTS public.staff_validation
+    ADD CONSTRAINT staff_validation_employer_id_fkey FOREIGN KEY (employer_id)
+    REFERENCES public.employers (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.system_users
+    ADD CONSTRAINT fkjckdy6h44i5o59awck4pt043h FOREIGN KEY (user_id)
+    REFERENCES public.users (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+CREATE INDEX IF NOT EXISTS system_users_pkey
+    ON public.system_users(user_id);
 
 END;
