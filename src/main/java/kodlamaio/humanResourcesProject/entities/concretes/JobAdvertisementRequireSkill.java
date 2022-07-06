@@ -12,7 +12,6 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 @Table(name =  "job_advertisements_require_skills")
 public class JobAdvertisementRequireSkill {
 
@@ -24,8 +23,7 @@ public class JobAdvertisementRequireSkill {
     @Column(name = "job_advertisements_id")
     private int JobAdvertisementsId;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+
     @Column(name = "skill_id")
-    private Skill skill;
+    private int skillId;
 }

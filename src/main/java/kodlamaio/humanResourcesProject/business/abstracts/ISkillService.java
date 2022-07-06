@@ -1,0 +1,12 @@
+package kodlamaio.humanResourcesProject.business.abstracts;
+
+import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
+import kodlamaio.humanResourcesProject.core.utilities.results.Result;
+import kodlamaio.humanResourcesProject.entities.concretes.Skill;
+
+import java.util.List;
+
+public interface ISkillService {
+    Result add(Skill skill);
+    DataResult<List<Skill>> getAll();
+}
