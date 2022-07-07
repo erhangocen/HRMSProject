@@ -46,8 +46,23 @@ public class JobAdvertisementController {
         return _jobAdvertisementService.getActiveAdvertisementsByEmployer(employerId);
     }
 
+    @PostMapping("advertisementActiveFalse")
+    public Result advertisementActiveFalse(@RequestParam int id){
+        return _jobAdvertisementService.advertisementActiveFalse(id);
+    }
+
+    @PostMapping("advertisementActiveTrue")
+    public Result advertisementActiveTrue(@RequestParam int id){
+        return _jobAdvertisementService.advertisementActiveTrue(id);
+    }
+
     @GetMapping("getActiveAdvertisementsByDeadlineAsc")
     public DataResult<List<JobAdvertisement>> getActiveAdvertisementsByDeadlineAsc(){
         return _jobAdvertisementService.getActiveAdvertisementsByDeadlineAsc();
+    }
+
+    @GetMapping("getActiveAdvertisementsByDeadlineDesc")
+    public DataResult<List<JobAdvertisement>> getActiveAdvertisementsByDeadlineDesc(){
+        return _jobAdvertisementService.getActiveAdvertisementsByDeadlineDesc();
     }
 }

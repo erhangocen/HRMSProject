@@ -30,6 +30,11 @@ public class StaffValidationController {
         return _staffValidationService.add(staffValidation);
     }
 
+    @PostMapping("validate")
+    public Result validate(@RequestParam int staffValidationId,@RequestParam int systemUserId){
+        return _staffValidationService.validate(staffValidationId,systemUserId);
+    }
+
     @DeleteMapping("delete")
     public Result delete(StaffValidation staffValidation){
         return _staffValidationService.delete(staffValidation);

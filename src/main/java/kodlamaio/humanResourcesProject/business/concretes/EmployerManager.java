@@ -59,13 +59,13 @@ public class EmployerManager implements IEmployerService {
             _employerDao.save(employer);
 
             StaffValidation staffValidation = new StaffValidation();
-            staffValidation.setEmployerId(employer.getUserId());
+            staffValidation.setUserId(employer.getUserId());
             staffValidation.setValid(false);
             _staffValidationService.add(staffValidation);
 
             EmailValidation emailValidation = new EmailValidation();
-            emailValidation.setUser_id(employer.getUserId());
-            emailValidation.set_valid(false);
+            emailValidation.setUserId(employer.getUserId());
+            emailValidation.setValid(false);
             _emailValidationService.add(emailValidation);
 
             return new SuccessResult();

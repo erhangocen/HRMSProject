@@ -19,10 +19,10 @@ public class EmailValidation {
     private int id;
 
     @Column(name = "user_id")
-    private int user_id;
+    private int userId;
 
     @Column(name = "is_valid")
-    private boolean is_valid;
+    private boolean isValid;
 
 
 }

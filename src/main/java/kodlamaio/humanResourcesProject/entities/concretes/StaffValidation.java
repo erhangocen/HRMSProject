@@ -20,7 +20,7 @@ public class StaffValidation {
     private int id;
 
     @Column(name = "employer_id")
-    private int employerId;
+    private int userId;
 
     @Column(name = "system_user_id")
     private int systemUserId;

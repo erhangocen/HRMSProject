@@ -9,8 +9,9 @@ import java.util.List;
 public interface IStaffValidationService {
 
     Result add(StaffValidation staffValidation);
-    Result update(StaffValidation staffValidation);
+    Result validate(int staffValidationId, int systemUserId);
     Result delete(StaffValidation staffValidation);
     DataResult<List<StaffValidation>> getAll();
+    DataResult<StaffValidation> getByUserId(int id);
 
 }

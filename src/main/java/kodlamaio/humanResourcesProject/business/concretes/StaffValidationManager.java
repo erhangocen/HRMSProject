@@ -30,9 +30,12 @@ public class StaffValidationManager implements IStaffValidationService {
     }
 
     @Override
-    public Result update(StaffValidation staffValidation) {
+    public Result validate(int staffValidationId,int systemUserId) {
+        StaffValidation staffValidation = _staffValidationDao.findById(staffValidationId);
+        staffValidation.setValid(true);
+        staffValidation.setSystemUserId(systemUserId);
         _staffValidationDao.save(staffValidation);
-        return new SuccessResult();
+        return new SuccessResult("Staff validation success");
     }
 
     @Override
@@ -44,6 +47,11 @@ public class StaffValidationManager implements IStaffValidationService {
     @Override
     public DataResult<List<StaffValidation>> getAll() {
         return new SuccessDataResult<List<StaffValidation>>(_staffValidationDao.findAll());
+    }
+
+    @Override
+    public DataResult<StaffValidation> getByUserId(int id) {
+        return new SuccessDataResult<StaffValidation>(_staffValidationDao.findByUserId(id));
     }
 
 

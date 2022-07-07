@@ -54,8 +54,8 @@ public class JobSeekerManager implements IJobSeekerService {
             _jobSeekerDao.save(jobSeeker);
 
             EmailValidation emailValidation = new EmailValidation();
-            emailValidation.setUser_id(jobSeeker.getUserId());
-            emailValidation.set_valid(false);
+            emailValidation.setUserId(jobSeeker.getUserId());
+            emailValidation.setValid(false);
             _emailValidationService.add(emailValidation);
 
             return new SuccessResult();

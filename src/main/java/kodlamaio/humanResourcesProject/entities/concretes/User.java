@@ -29,11 +29,12 @@ public class User{
     @Column(name = "user_id")
     private int userId;
 
-    @Email
+
     @Pattern(regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     @NotNull
     @Column(name = "email")
     @NotBlank
+    @Email
     private String email;
 
 

@@ -8,7 +8,9 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface IJobAdvertisementDao extends JpaRepository<JobAdvertisement,Integer> {
+    JobAdvertisement findById(int id);
     List<JobAdvertisement> findByIsActiveTrue();
     List<JobAdvertisement> findByEmployer_UserIdAndIsActiveTrue(int employerId);
-    List<JobAdvertisement> findByOrderByApplicationDeadlineAsc();
+    List<JobAdvertisement> findByIsActiveTrueOrderByApplicationDeadlineAsc();
+    List<JobAdvertisement> findByIsActiveTrueOrderByApplicationDeadlineDesc();
 }

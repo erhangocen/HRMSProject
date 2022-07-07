@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @PrimaryKeyJoinColumn(name = "user_id", referencedColumnName = "user_id")
@@ -26,6 +27,7 @@ public class Employer extends User {
     @Column(name = "web_address")
     private String webAddress;
 
+    @NotNull
     @Column(name = "phone_number")
     private String phoneNumber;
 

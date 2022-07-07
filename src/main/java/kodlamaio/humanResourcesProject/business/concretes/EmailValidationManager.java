@@ -35,7 +35,20 @@ public class EmailValidationManager implements IEmailValidationService {
     }
 
     @Override
+    public Result validate(int emailValidationId) {
+        EmailValidation emailValidation = _emailValidationDao.findById(emailValidationId);
+        emailValidation.setValid(true);
+        _emailValidationDao.save(emailValidation);
+        return new SuccessResult("Email validation success");
+    }
+
+    @Override
     public DataResult<List<EmailValidation>> getAll() {
         return new SuccessDataResult<List<EmailValidation>>(_emailValidationDao.findAll());
+    }
+
+    @Override
+    public DataResult<EmailValidation> getByUserId(int id) {
+        return new SuccessDataResult<EmailValidation>(_emailValidationDao.findByUserId(id));
     }
 }

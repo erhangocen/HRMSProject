@@ -30,6 +30,11 @@ public class EmailValidationController {
         return _emailValidationService.delete(emailValidation);
     }
 
+    @PostMapping("validate")
+    public Result validate(@RequestParam int emailValidationId){
+        return _emailValidationService.validate(emailValidationId);
+    }
+
     @GetMapping("getAll")
     public DataResult<List<EmailValidation>> getAll(){
         return _emailValidationService.getAll();
