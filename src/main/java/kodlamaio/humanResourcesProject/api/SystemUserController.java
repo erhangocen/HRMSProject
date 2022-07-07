@@ -5,10 +5,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.SystemUser;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -31,6 +28,11 @@ public class SystemUserController {
     @PostMapping("add")
     public Result add(SystemUser systemUser){
         return _systemUserService.add(systemUser);
+    }
+
+    @DeleteMapping("delete")
+    public Result delete(SystemUser systemUser){
+        return _systemUserService.delete(systemUser);
     }
 
 }

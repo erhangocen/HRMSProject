@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface ISkillService {
     Result add(Skill skill);
+    Result delete(Skill skill);
     DataResult<List<Skill>> getAll();
 }

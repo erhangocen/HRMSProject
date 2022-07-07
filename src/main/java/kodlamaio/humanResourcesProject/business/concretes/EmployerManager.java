@@ -82,6 +82,12 @@ public class EmployerManager implements IEmployerService {
     }
 
     @Override
+    public Result delete(Employer employer) {
+        _employerDao.delete(employer);
+        return new SuccessResult();
+    }
+
+    @Override
     public DataResult<List<Employer>> getAll() {
         return new SuccessDataResult<List<Employer>>(_employerDao.findAll());
     }

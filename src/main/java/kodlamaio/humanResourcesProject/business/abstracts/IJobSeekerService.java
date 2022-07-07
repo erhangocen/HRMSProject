@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface IJobSeekerService {
     Result add(JobSeeker jobSeeker) throws Exception;
+    Result delete(JobSeeker jobSeeker);
     DataResult<List<JobSeeker>> getAll();
 }

@@ -21,7 +21,7 @@ public class JobPositionsController {
         this._jobPositionService = _jobPositionService;
     }
 
-    @GetMapping("getall")
+    @GetMapping("getAll")
     public DataResult<List<JobPosition>> getAll(){
         return _jobPositionService.getAll();
     }
@@ -31,7 +31,7 @@ public class JobPositionsController {
         return _jobPositionService.add(jobPosition);
     }
 
-    @PostMapping("delete")
+    @DeleteMapping("delete")
     public Result delete(@RequestBody JobPosition jobPosition){
         return _jobPositionService.delete(jobPosition);
     }

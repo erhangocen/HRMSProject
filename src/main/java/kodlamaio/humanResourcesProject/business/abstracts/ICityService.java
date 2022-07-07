@@ -9,6 +9,7 @@ import java.util.List;
 public interface ICityService {
 
     Result add(City city);
+    Result delete(City city);
 
     DataResult<List<City>> getAll();
 }

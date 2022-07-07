@@ -30,6 +30,12 @@ public class SystemUserManager implements ISystemUserService {
     }
 
     @Override
+    public Result delete(SystemUser systemUser) {
+        _systemUserDao.delete(systemUser);
+        return new SuccessResult();
+    }
+
+    @Override
     public DataResult<List<SystemUser>> getAll() {
         return new SuccessDataResult<List<SystemUser>>(_systemUserDao.findAll());
     }

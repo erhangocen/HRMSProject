@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface ISystemUserService {
     Result add(SystemUser systemUser);
+    Result delete(SystemUser systemUser);
     DataResult<List<SystemUser>> getAll();
 }

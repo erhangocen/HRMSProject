@@ -52,19 +52,16 @@ public class JobAdvertisement {
     private int openPositionCount;
 
     @NotNull
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     private City city;
 
     @NotNull
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employer_id")
     private Employer employer;
 
     @NotNull
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "job_position_id")
     private JobPosition jobPosition;

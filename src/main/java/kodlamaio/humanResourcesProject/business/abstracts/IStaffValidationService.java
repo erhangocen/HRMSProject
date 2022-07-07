@@ -10,6 +10,7 @@ public interface IStaffValidationService {
 
     Result add(StaffValidation staffValidation);
     Result update(StaffValidation staffValidation);
+    Result delete(StaffValidation staffValidation);
     DataResult<List<StaffValidation>> getAll();
 
 }

@@ -30,6 +30,12 @@ public class JobSeekerPositionManager implements IJobSeekerPositionService {
     }
 
     @Override
+    public Result delete(JobSeekerPosition jobSeekerPosition) {
+        _jobSeekerPositionDao.delete(jobSeekerPosition);
+        return new SuccessResult();
+    }
+
+    @Override
     public DataResult<List<JobSeekerPosition>> getAll() {
         return new SuccessDataResult<List<JobSeekerPosition>>(_jobSeekerPositionDao.findAll());
     }

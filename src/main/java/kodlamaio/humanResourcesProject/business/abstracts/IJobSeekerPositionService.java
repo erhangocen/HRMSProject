@@ -9,6 +9,7 @@ import java.util.List;
 public interface IJobSeekerPositionService {
 
     Result add(JobSeekerPosition jobSeekerPosition);
+    Result delete(JobSeekerPosition jobSeekerPosition);
     DataResult<List<JobSeekerPosition>> getAll();
 
 }

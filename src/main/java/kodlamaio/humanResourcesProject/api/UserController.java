@@ -7,6 +7,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.SuccessDataResult;
 import kodlamaio.humanResourcesProject.entities.concretes.EmailValidation;
 import kodlamaio.humanResourcesProject.entities.concretes.SystemUser;
 import kodlamaio.humanResourcesProject.entities.concretes.User;
+import org.apache.axis.constants.Use;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,5 +37,10 @@ public class UserController {
     @PostMapping("validation")
     public Result validation(@RequestBody EmailValidation emailValidation){
         return _userService.validate(emailValidation);
+    }
+
+    @DeleteMapping("delete")
+    public Result delete(@RequestBody User user){
+        return _userService.delete(user);
     }
 }

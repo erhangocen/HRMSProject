@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface IJobSeekerSkillService {
     Result add(JobSeekerSkill jobSeekerSkill);
+    Result delete(JobSeekerSkill jobSeekerSkill);
     DataResult<List<JobSeekerSkill>> getAll();
 }

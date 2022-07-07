@@ -14,4 +14,5 @@ public interface IUserService {
 
     Result checkEmail(User user);
     Result validate(EmailValidation emailValidation);
+    Result delete(User user);
 }

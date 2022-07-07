@@ -46,4 +46,10 @@ public class UserManager implements IUserService {
         return new SuccessResult();
     }
 
+    @Override
+    public Result delete(User user) {
+        _userDao.delete(user);
+        return new SuccessResult();
+    }
+
 }

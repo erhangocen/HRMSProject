@@ -21,7 +21,7 @@ public class JobSeekerController {
         this._jobSeekerService = _jobSeekerService;
     }
 
-    @GetMapping("getall")
+    @GetMapping("getAll")
     public DataResult<List<JobSeeker>> getAll(){
         return _jobSeekerService.getAll();
     }
@@ -29,5 +29,10 @@ public class JobSeekerController {
     @PostMapping("add")
     public Result add(JobSeeker jobSeeker) throws Exception{
         return _jobSeekerService.add(jobSeeker);
+    }
+
+    @DeleteMapping("delete")
+    public Result delete(JobSeeker jobSeeker){
+        return _jobSeekerService.delete(jobSeeker);
     }
 }

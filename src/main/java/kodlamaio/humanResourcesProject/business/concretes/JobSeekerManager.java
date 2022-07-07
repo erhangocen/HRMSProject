@@ -67,6 +67,12 @@ public class JobSeekerManager implements IJobSeekerService {
     }
 
     @Override
+    public Result delete(JobSeeker jobSeeker) {
+        _jobSeekerDao.delete(jobSeeker);
+        return new SuccessResult();
+    }
+
+    @Override
     public DataResult<List<JobSeeker>> getAll() {
         return new SuccessDataResult<List<JobSeeker>>(_jobSeekerDao.findAll());
     }

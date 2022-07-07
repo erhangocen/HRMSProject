@@ -21,7 +21,7 @@ public class EmployerController {
         this._employerService = _employerService;
     }
 
-    @GetMapping("getall")
+    @GetMapping("getAll")
     public DataResult<List<Employer>> getAll(){
         return _employerService.getAll();
     }
@@ -35,4 +35,10 @@ public class EmployerController {
     public Result update(@RequestBody Employer employer){
         return _employerService.update(employer);
     }
+
+    @DeleteMapping("delete")
+    public Result delete(@RequestBody Employer employer){
+        return _employerService.delete(employer);
+    }
+
 }

@@ -29,6 +29,12 @@ public class EmailValidationManager implements IEmailValidationService {
     }
 
     @Override
+    public Result delete(EmailValidation emailValidation) {
+        _emailValidationDao.delete(emailValidation);
+        return new SuccessResult();
+    }
+
+    @Override
     public DataResult<List<EmailValidation>> getAll() {
         return new SuccessDataResult<List<EmailValidation>>(_emailValidationDao.findAll());
     }
