@@ -38,4 +38,19 @@ public class JobAdvertisementManager implements IJobAdvertisementService {
     public DataResult<List<JobAdvertisement>> getAll() {
         return new SuccessDataResult<List<JobAdvertisement>>(_jobAdvertisementDao.findAll());
     }
+
+    @Override
+    public DataResult<List<JobAdvertisement>> getActiveAdvertisements() {
+        return new SuccessDataResult<List<JobAdvertisement>>(_jobAdvertisementDao.findByIsActiveTrue());
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisement>> getActiveAdvertisementsByEmployer(int employerId) {
+        return new SuccessDataResult<List<JobAdvertisement>>(_jobAdvertisementDao.findByEmployer_UserIdAndIsActiveTrue(employerId));
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisement>> getActiveAdvertisementsByDeadlineAsc() {
+        return new SuccessDataResult<List<JobAdvertisement>>(_jobAdvertisementDao.findByOrderByApplicationDeadlineAsc());
+    }
 }

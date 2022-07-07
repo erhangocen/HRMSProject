@@ -11,4 +11,8 @@ public interface IJobAdvertisementService {
     Result add(JobAdvertisement jobAdvertisement);
     Result delete(JobAdvertisement jobAdvertisement);
     DataResult<List<JobAdvertisement>> getAll();
+    DataResult<List<JobAdvertisement>> getActiveAdvertisements();
+
+    DataResult<List<JobAdvertisement>> getActiveAdvertisementsByEmployer(int employerId);
+    DataResult<List<JobAdvertisement>> getActiveAdvertisementsByDeadlineAsc();
 }

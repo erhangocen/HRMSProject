@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/emailValidaion/")
+@RequestMapping("/api/emailValidation/")
 public class EmailValidationController {
 
     private IEmailValidationService _emailValidationService;

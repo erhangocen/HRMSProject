@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/jobAdvertisement/")
 public class JobAdvertisementController {
@@ -33,5 +34,20 @@ public class JobAdvertisementController {
     @GetMapping("getAll")
     public DataResult<List<JobAdvertisement>> getAll(){
         return _jobAdvertisementService.getAll();
+    }
+
+    @GetMapping("getActiveAdvertisements")
+    public DataResult<List<JobAdvertisement>> getActiveAdvertisements(){
+        return _jobAdvertisementService.getActiveAdvertisements();
+    }
+
+    @GetMapping("getActiveAdvertisementsByEmployer")
+    public DataResult<List<JobAdvertisement>> getActiveAdvertisementsByEmployer(@RequestParam int employerId){
+        return _jobAdvertisementService.getActiveAdvertisementsByEmployer(employerId);
+    }
+
+    @GetMapping("getActiveAdvertisementsByDeadlineAsc")
+    public DataResult<List<JobAdvertisement>> getActiveAdvertisementsByDeadlineAsc(){
+        return _jobAdvertisementService.getActiveAdvertisementsByDeadlineAsc();
     }
 }
