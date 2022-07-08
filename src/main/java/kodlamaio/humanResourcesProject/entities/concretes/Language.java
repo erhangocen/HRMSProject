@@ -10,19 +10,14 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "job_seekers_skills")
-public class JobSeekerSkill {
+@Table(name = "languages")
+public class Language {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name = "skill_id")
-    private Skill skill;
-
-    @ManyToOne()
-    @JoinColumn(name = "cv_id")
-    private Cv cv;
+    @Column(name = "language_name")
+    private String languageName;
 }

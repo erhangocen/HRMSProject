@@ -11,6 +11,13 @@ CREATE TABLE IF NOT EXISTS public.cities
     CONSTRAINT cities_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS public.cvs
+(
+    cv_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    user_id integer NOT NULL,
+    CONSTRAINT cvs_pkey PRIMARY KEY (cv_id)
+);
+
 CREATE TABLE IF NOT EXISTS public.email_validation
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
@@ -60,6 +67,37 @@ CREATE TABLE IF NOT EXISTS public.job_positions
     CONSTRAINT job_positions_pkey PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS public.job_seeker_experiences
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    position_name character varying COLLATE pg_catalog."default",
+    workplace_name character varying COLLATE pg_catalog."default",
+    start_date date,
+    finish_date date,
+    cv_id integer,
+    CONSTRAINT job_seeker_experiences_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.job_seeker_languages
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    language_id integer NOT NULL,
+    cv_id integer NOT NULL,
+    level integer NOT NULL,
+    CONSTRAINT job_seeker_languages_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.job_seeker_schools
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    school_name character varying COLLATE pg_catalog."default",
+    department_name character varying COLLATE pg_catalog."default",
+    start_year integer,
+    finish_year integer,
+    cv_id integer,
+    CONSTRAINT job_seeker_schools_pkey PRIMARY KEY (id)
+);
+
 CREATE TABLE IF NOT EXISTS public.job_seekers
 (
     user_id integer NOT NULL,
@@ -67,23 +105,34 @@ CREATE TABLE IF NOT EXISTS public.job_seekers
     last_name character varying COLLATE pg_catalog."default" NOT NULL,
     national_id character varying COLLATE pg_catalog."default" NOT NULL,
     birth_year character varying COLLATE pg_catalog."default" NOT NULL,
+    github_link character varying COLLATE pg_catalog."default",
+    linkedin_link character varying COLLATE pg_catalog."default",
+    cover_letter character varying COLLATE pg_catalog."default",
     CONSTRAINT job_seekers_pkey PRIMARY KEY (user_id)
 );
 
 CREATE TABLE IF NOT EXISTS public.job_seekers_positions
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-    job_seeker_id integer NOT NULL,
+    cv_id integer NOT NULL,
     job_position_id integer NOT NULL,
+    job_seeker_id integer,
     CONSTRAINT job_seekers_positions_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS public.job_seekers_skills
 (
     id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
-    job_seeker_id integer NOT NULL,
+    cv_id integer NOT NULL,
     skill_id integer NOT NULL,
     CONSTRAINT job_seekers_skills_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS public.languages
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+    language_name character varying COLLATE pg_catalog."default",
+    CONSTRAINT languages_pkey PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS public.skills
@@ -115,6 +164,13 @@ CREATE TABLE IF NOT EXISTS public.users
     password character varying(50) COLLATE pg_catalog."default" NOT NULL,
     CONSTRAINT users_pkey PRIMARY KEY (user_id)
 );
+
+ALTER TABLE IF EXISTS public.cvs
+    ADD CONSTRAINT cvs_user_id_fkey FOREIGN KEY (user_id)
+    REFERENCES public.job_seekers (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
 
 ALTER TABLE IF EXISTS public.email_validation
     ADD CONSTRAINT email_validation_user_id_fkey FOREIGN KEY (user_id)
@@ -180,6 +236,37 @@ ALTER TABLE IF EXISTS public.job_advertisements_require_skills
     NOT VALID;
 
 
+ALTER TABLE IF EXISTS public.job_seeker_experiences
+    ADD CONSTRAINT job_seeker_experiences_cv_id_fkey FOREIGN KEY (cv_id)
+    REFERENCES public.cvs (cv_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.job_seeker_languages
+    ADD CONSTRAINT job_seeker_languages_cv_id_fkey FOREIGN KEY (cv_id)
+    REFERENCES public.cvs (cv_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.job_seeker_languages
+    ADD CONSTRAINT job_seeker_languages_language_id_fkey FOREIGN KEY (language_id)
+    REFERENCES public.languages (id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+
+ALTER TABLE IF EXISTS public.job_seeker_schools
+    ADD CONSTRAINT job_seeker_schools_cv_id_fkey FOREIGN KEY (cv_id)
+    REFERENCES public.cvs (cv_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
 ALTER TABLE IF EXISTS public.job_seekers
     ADD CONSTRAINT job_seekers_user_id_fkey FOREIGN KEY (user_id)
     REFERENCES public.users (user_id) MATCH SIMPLE
@@ -191,6 +278,21 @@ CREATE INDEX IF NOT EXISTS job_seekers_pkey
 
 
 ALTER TABLE IF EXISTS public.job_seekers_positions
+    ADD CONSTRAINT fk2ga25n693y6shoqpb9jn8gs4g FOREIGN KEY (job_seeker_id)
+    REFERENCES public.job_seekers (user_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION;
+
+
+ALTER TABLE IF EXISTS public.job_seekers_positions
+    ADD CONSTRAINT job_seekers_positions_cv_id_fkey FOREIGN KEY (cv_id)
+    REFERENCES public.cvs (cv_id) MATCH SIMPLE
+    ON UPDATE NO ACTION
+    ON DELETE NO ACTION
+    NOT VALID;
+
+
+ALTER TABLE IF EXISTS public.job_seekers_positions
     ADD CONSTRAINT job_seekers_positions_job_position_id_fkey FOREIGN KEY (job_position_id)
     REFERENCES public.job_positions (id) MATCH SIMPLE
     ON UPDATE NO ACTION
@@ -198,22 +300,14 @@ ALTER TABLE IF EXISTS public.job_seekers_positions
     NOT VALID;
 
 
-ALTER TABLE IF EXISTS public.job_seekers_positions
-    ADD CONSTRAINT job_seekers_positions_job_seeker_id_fkey FOREIGN KEY (job_seeker_id)
-    REFERENCES public.job_seekers (user_id) MATCH SIMPLE
-    ON UPDATE NO ACTION
-    ON DELETE NO ACTION
-    NOT VALID;
-
-
 ALTER TABLE IF EXISTS public.job_seekers_skills
-    ADD CONSTRAINT job_seekers_skills_job_seeker_id_fkey FOREIGN KEY (job_seeker_id)
-    REFERENCES public.job_seekers (user_id) MATCH SIMPLE
+    ADD CONSTRAINT job_seekers_skills_cv_id_fkey FOREIGN KEY (cv_id)
+    REFERENCES public.cvs (cv_id) MATCH SIMPLE
     ON UPDATE NO ACTION
     ON DELETE NO ACTION
     NOT VALID;
 CREATE INDEX IF NOT EXISTS fki_job_seekers_skills_job_seeker_id_fkey
-    ON public.job_seekers_skills(job_seeker_id);
+    ON public.job_seekers_skills(cv_id);
 
 
 ALTER TABLE IF EXISTS public.job_seekers_skills

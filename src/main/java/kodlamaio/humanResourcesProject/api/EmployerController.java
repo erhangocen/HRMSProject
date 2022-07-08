@@ -29,8 +29,8 @@ public class EmployerController {
     }
 
     @GetMapping("getAll")
-    public DataResult<List<Employer>> getAll(){
-        return _employerService.getAll();
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(_employerService.getAll());
     }
 
     @PostMapping("add")
@@ -50,13 +50,13 @@ public class EmployerController {
     }
 
     @PostMapping("update")
-    public Result update(@RequestBody Employer employer){
-        return _employerService.update(employer);
+    public ResponseEntity<?> update(@RequestBody Employer employer){
+        return ResponseEntity.ok(_employerService.update(employer));
     }
 
     @DeleteMapping("delete")
-    public Result delete(@RequestBody Employer employer){
-        return _employerService.delete(employer);
+    public ResponseEntity<?> delete(@RequestBody Employer employer){
+        return ResponseEntity.ok(_employerService.delete(employer));
     }
 
 }

@@ -10,19 +10,28 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "job_seekers_skills")
-public class JobSeekerSkill {
+@Table(name = "job_seeker_schools")
+public class JobSeekerSchool {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name = "skill_id")
-    private Skill skill;
+    @Column(name = "school_name")
+    private String schoolName;
+
+    @Column(name = "department_name")
+    private String departmentName;
+
+    @Column(name = "start_year")
+    private int startYear;
+
+    @Column(name = "finish_year")
+    private int finishYear;
 
     @ManyToOne()
     @JoinColumn(name = "cv_id")
     private Cv cv;
+
 }

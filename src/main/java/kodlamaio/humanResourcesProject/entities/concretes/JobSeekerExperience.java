@@ -5,22 +5,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "job_seekers_skills")
-public class JobSeekerSkill {
+@Table(name = "job_seeker_experiences")
+public class JobSeekerExperience {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name = "skill_id")
-    private Skill skill;
+    @Column(name = "position_name")
+    private String positionName;
+
+    @Column(name = "workplace_name")
+    private String workplaceName;
+
+    @Column(name = "start_date")
+    private Date startDate;
+
+    @Column(name = "finish_date")
+    private Date finishDate;
 
     @ManyToOne()
     @JoinColumn(name = "cv_id")

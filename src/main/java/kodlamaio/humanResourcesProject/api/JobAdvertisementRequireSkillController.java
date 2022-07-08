@@ -6,6 +6,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.JobAdvertisement;
 import kodlamaio.humanResourcesProject.entities.concretes.JobAdvertisementRequireSkill;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,17 +22,17 @@ public class JobAdvertisementRequireSkillController {
     }
 
     @PostMapping("add")
-    public Result add(@RequestBody JobAdvertisementRequireSkill jobAdvertisementRequireSkill){
-        return _jobAdvertisementRequireSkillService.add(jobAdvertisementRequireSkill);
+    public ResponseEntity<?> add(@RequestBody JobAdvertisementRequireSkill jobAdvertisementRequireSkill){
+        return ResponseEntity.ok(_jobAdvertisementRequireSkillService.add(jobAdvertisementRequireSkill));
     }
 
     @DeleteMapping("delete")
-    public Result delete(@RequestBody JobAdvertisementRequireSkill jobAdvertisementRequireSkill){
-        return _jobAdvertisementRequireSkillService.delete(jobAdvertisementRequireSkill);
+    public ResponseEntity<?> delete(@RequestBody JobAdvertisementRequireSkill jobAdvertisementRequireSkill){
+        return ResponseEntity.ok(_jobAdvertisementRequireSkillService.delete(jobAdvertisementRequireSkill));
     }
 
     @GetMapping("getAll")
-    public DataResult<List<JobAdvertisementRequireSkill>> getAll(){
-        return _jobAdvertisementRequireSkillService.getAll();
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(_jobAdvertisementRequireSkillService.getAll());
     }
 }

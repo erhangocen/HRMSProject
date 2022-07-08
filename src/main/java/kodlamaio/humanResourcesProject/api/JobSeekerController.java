@@ -5,6 +5,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeeker;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,17 +23,17 @@ public class JobSeekerController {
     }
 
     @GetMapping("getAll")
-    public DataResult<List<JobSeeker>> getAll(){
-        return _jobSeekerService.getAll();
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(_jobSeekerService.getAll());
     }
 
     @PostMapping("add")
-    public Result add(JobSeeker jobSeeker) throws Exception{
-        return _jobSeekerService.add(jobSeeker);
+    public ResponseEntity<?> add(JobSeeker jobSeeker) throws Exception{
+        return ResponseEntity.ok(_jobSeekerService.getAll());
     }
 
     @DeleteMapping("delete")
-    public Result delete(JobSeeker jobSeeker){
-        return _jobSeekerService.delete(jobSeeker);
+    public ResponseEntity<?> delete(JobSeeker jobSeeker){
+        return ResponseEntity.ok(_jobSeekerService.delete(jobSeeker));
     }
 }

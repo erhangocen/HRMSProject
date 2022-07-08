@@ -5,6 +5,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.SystemUser;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,18 +22,18 @@ public class SystemUserController {
     }
 
     @GetMapping("getAll")
-    public DataResult<List<SystemUser>> getAll(){
-        return _systemUserService.getAll();
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(_systemUserService.getAll());
     }
 
     @PostMapping("add")
-    public Result add(SystemUser systemUser){
-        return _systemUserService.add(systemUser);
+    public ResponseEntity<?> add(SystemUser systemUser){
+        return ResponseEntity.ok(_systemUserService.add(systemUser));
     }
 
     @DeleteMapping("delete")
-    public Result delete(SystemUser systemUser){
-        return _systemUserService.delete(systemUser);
+    public ResponseEntity<?> delete(SystemUser systemUser){
+        return ResponseEntity.ok(_systemUserService.delete(systemUser));
     }
 
 }

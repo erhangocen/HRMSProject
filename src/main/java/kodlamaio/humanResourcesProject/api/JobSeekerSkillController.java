@@ -6,6 +6,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeekerPosition;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeekerSkill;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,17 +22,17 @@ public class JobSeekerSkillController {
     }
 
     @GetMapping("getAll")
-    public DataResult<List<JobSeekerSkill>> getAll(){
-        return _jobSeekerSkillService.getAll();
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(_jobSeekerSkillService.getAll());
     }
 
     @PostMapping("add")
-    public Result add(JobSeekerSkill jobSeekerSkill){
-        return _jobSeekerSkillService.add(jobSeekerSkill);
+    public ResponseEntity<?> add(JobSeekerSkill jobSeekerSkill){
+        return ResponseEntity.ok(_jobSeekerSkillService.add(jobSeekerSkill));
     }
 
     @DeleteMapping("delete")
-    public Result delete(JobSeekerSkill jobSeekerSkill){
-        return _jobSeekerSkillService.delete(jobSeekerSkill);
+    public ResponseEntity<?> delete(JobSeekerSkill jobSeekerSkill){
+        return ResponseEntity.ok(_jobSeekerSkillService.delete(jobSeekerSkill));
     }
 }

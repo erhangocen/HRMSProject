@@ -5,6 +5,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.City;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,17 +21,17 @@ public class CityController {
     }
 
     @GetMapping("getAll")
-    public DataResult<List<City>> getAll(){
-       return  _cityService.getAll();
+    public ResponseEntity<?> getAll(){
+       return ResponseEntity.ok(_cityService.getAll());
     }
 
     @PostMapping("add")
-    public Result add(@RequestBody City city){
-       return _cityService.add(city);
+    public ResponseEntity<?> add(@RequestBody City city){
+       return ResponseEntity.ok(_cityService.add(city));
     }
 
     @DeleteMapping("delete")
-    public Result delete(@RequestBody City city){
-        return _cityService.delete(city);
+    public ResponseEntity<?> delete(@RequestBody City city){
+        return ResponseEntity.ok(_cityService.delete(city));
     }
 }

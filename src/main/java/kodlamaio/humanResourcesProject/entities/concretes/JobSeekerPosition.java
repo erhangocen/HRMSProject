@@ -20,9 +20,11 @@ public class JobSeekerPosition {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "job_seeker_id")
-    private int jobSeekerId;
+    @ManyToOne()
+    @JoinColumn(name = "job_seeker_id")
+    private JobSeeker jobSeeker;
 
-    @Column(name = "job_position_id")
-    private int jobPositionId;
+    @ManyToOne()
+    @JoinColumn(name = "cv_id")
+    private Cv cv;
 }

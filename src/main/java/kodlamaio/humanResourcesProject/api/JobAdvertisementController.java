@@ -6,6 +6,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.EmailValidation;
 import kodlamaio.humanResourcesProject.entities.concretes.JobAdvertisement;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,47 +23,47 @@ public class JobAdvertisementController {
     }
 
     @PostMapping("add")
-    public Result add(@RequestBody JobAdvertisement jobAdvertisement){
-        return _jobAdvertisementService.add(jobAdvertisement);
+    public ResponseEntity<?> add(@RequestBody JobAdvertisement jobAdvertisement){
+        return ResponseEntity.ok(_jobAdvertisementService.add(jobAdvertisement));
     }
 
     @DeleteMapping("delete")
-    public Result delete(@RequestBody JobAdvertisement jobAdvertisement){
-        return _jobAdvertisementService.delete(jobAdvertisement);
+    public ResponseEntity<?> delete(@RequestBody JobAdvertisement jobAdvertisement){
+        return ResponseEntity.ok(_jobAdvertisementService.delete(jobAdvertisement));
     }
 
     @GetMapping("getAll")
-    public DataResult<List<JobAdvertisement>> getAll(){
-        return _jobAdvertisementService.getAll();
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(_jobAdvertisementService.getAll());
     }
 
     @GetMapping("getActiveAdvertisements")
-    public DataResult<List<JobAdvertisement>> getActiveAdvertisements(){
-        return _jobAdvertisementService.getActiveAdvertisements();
+    public ResponseEntity<?> getActiveAdvertisements(){
+        return ResponseEntity.ok(_jobAdvertisementService.getActiveAdvertisements());
     }
 
     @GetMapping("getActiveAdvertisementsByEmployer")
-    public DataResult<List<JobAdvertisement>> getActiveAdvertisementsByEmployer(@RequestParam int employerId){
-        return _jobAdvertisementService.getActiveAdvertisementsByEmployer(employerId);
+    public ResponseEntity<?> getActiveAdvertisementsByEmployer(@RequestParam int employerId){
+        return ResponseEntity.ok(_jobAdvertisementService.getActiveAdvertisementsByEmployer(employerId));
     }
 
     @PostMapping("advertisementActiveFalse")
-    public Result advertisementActiveFalse(@RequestParam int id){
-        return _jobAdvertisementService.advertisementActiveFalse(id);
+    public ResponseEntity<?> advertisementActiveFalse(@RequestParam int id){
+        return ResponseEntity.ok(_jobAdvertisementService.advertisementActiveFalse(id));
     }
 
     @PostMapping("advertisementActiveTrue")
-    public Result advertisementActiveTrue(@RequestParam int id){
-        return _jobAdvertisementService.advertisementActiveTrue(id);
+    public ResponseEntity<?> advertisementActiveTrue(@RequestParam int id){
+        return ResponseEntity.ok(_jobAdvertisementService.advertisementActiveTrue(id));
     }
 
     @GetMapping("getActiveAdvertisementsByDeadlineAsc")
-    public DataResult<List<JobAdvertisement>> getActiveAdvertisementsByDeadlineAsc(){
-        return _jobAdvertisementService.getActiveAdvertisementsByDeadlineAsc();
+    public ResponseEntity<?> getActiveAdvertisementsByDeadlineAsc(){
+        return ResponseEntity.ok(_jobAdvertisementService.getActiveAdvertisementsByDeadlineAsc());
     }
 
     @GetMapping("getActiveAdvertisementsByDeadlineDesc")
-    public DataResult<List<JobAdvertisement>> getActiveAdvertisementsByDeadlineDesc(){
-        return _jobAdvertisementService.getActiveAdvertisementsByDeadlineDesc();
+    public ResponseEntity<?> getActiveAdvertisementsByDeadlineDesc(){
+        return ResponseEntity.ok(_jobAdvertisementService.getActiveAdvertisementsByDeadlineDesc());
     }
 }

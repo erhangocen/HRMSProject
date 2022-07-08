@@ -5,6 +5,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.StaffValidation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,22 +22,22 @@ public class StaffValidationController {
     }
 
     @GetMapping("getAll")
-    public DataResult<List<StaffValidation>> getAll(){
-        return _staffValidationService.getAll();
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(_staffValidationService.getAll());
     }
 
     @PostMapping("add")
-    public Result add(StaffValidation staffValidation){
-        return _staffValidationService.add(staffValidation);
+    public ResponseEntity<?> add(StaffValidation staffValidation){
+        return ResponseEntity.ok(_staffValidationService.add(staffValidation));
     }
 
     @PostMapping("validate")
-    public Result validate(@RequestParam int staffValidationId,@RequestParam int systemUserId){
-        return _staffValidationService.validate(staffValidationId,systemUserId);
+    public ResponseEntity<?> validate(@RequestParam int staffValidationId,@RequestParam int systemUserId){
+        return ResponseEntity.ok(_staffValidationService.validate(staffValidationId,systemUserId));
     }
 
     @DeleteMapping("delete")
-    public Result delete(StaffValidation staffValidation){
-        return _staffValidationService.delete(staffValidation);
+    public ResponseEntity<?> delete(StaffValidation staffValidation){
+        return ResponseEntity.ok(_staffValidationService.delete(staffValidation));
     }
 }

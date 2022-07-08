@@ -9,6 +9,7 @@ import kodlamaio.humanResourcesProject.entities.concretes.SystemUser;
 import kodlamaio.humanResourcesProject.entities.concretes.User;
 import org.apache.axis.constants.Use;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,22 +26,22 @@ public class UserController {
     }
 
     @GetMapping("getAll")
-    public DataResult<List<User>> getAll(){
-        return _userService.getAllUser();
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.ok(_userService.getAllUser());
     }
 
     @GetMapping("getById")
-    public DataResult<User> getById(@RequestBody int id){
-        return _userService.getByUserId(id);
+    public ResponseEntity<?> getById(@RequestBody int id){
+        return ResponseEntity.ok(_userService.getByUserId(id));
     }
 
-    @PostMapping("validation")
-    public Result validation(@RequestBody EmailValidation emailValidation){
-        return _userService.validate(emailValidation);
+    @PostMapping("validate")
+    public ResponseEntity<?> validation(@RequestBody EmailValidation emailValidation){
+        return ResponseEntity.ok(_userService.validate(emailValidation));
     }
 
     @DeleteMapping("delete")
-    public Result delete(@RequestBody User user){
-        return _userService.delete(user);
+    public ResponseEntity<?> delete(@RequestBody User user){
+        return ResponseEntity.ok(_userService.delete(user));
     }
 }
