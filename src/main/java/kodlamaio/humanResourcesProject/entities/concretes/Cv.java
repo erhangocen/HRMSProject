@@ -43,7 +43,7 @@ public class Cv {
 
     @JsonIgnore
     @OneToMany(mappedBy = "cv")
-    private List<JobSeekerLanguages> jobSeekerLanguages;
+    private List<JobSeekerLanguage> jobSeekerLanguages;
 
     @JsonIgnore
     @OneToMany(mappedBy = "cv")

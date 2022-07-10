@@ -13,7 +13,7 @@ import javax.validation.constraints.Min;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "job_seeker_languages")
-public class JobSeekerLanguages {
+public class JobSeekerLanguage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
