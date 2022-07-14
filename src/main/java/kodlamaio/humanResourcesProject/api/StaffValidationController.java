@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/staffvalidations/")
+@RequestMapping("/api/staffValidations/")
 public class StaffValidationController {
 
     private IStaffValidationService _staffValidationService;
@@ -32,8 +32,8 @@ public class StaffValidationController {
     }
 
     @PostMapping("validate")
-    public ResponseEntity<?> validate(@RequestParam int staffValidationId,@RequestParam int systemUserId){
-        return ResponseEntity.ok(_staffValidationService.validate(staffValidationId,systemUserId));
+    public ResponseEntity<?> validate(@RequestParam int employerId,@RequestParam int systemUserId){
+        return ResponseEntity.ok(_staffValidationService.validate(employerId,systemUserId));
     }
 
     @DeleteMapping("delete")

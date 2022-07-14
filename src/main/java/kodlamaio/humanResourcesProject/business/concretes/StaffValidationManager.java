@@ -30,8 +30,8 @@ public class StaffValidationManager implements IStaffValidationService {
     }
 
     @Override
-    public Result validate(int staffValidationId,int systemUserId) {
-        StaffValidation staffValidation = _staffValidationDao.findById(staffValidationId);
+    public Result validate(int employerId,int systemUserId) {
+        StaffValidation staffValidation = _staffValidationDao.findByUserId(employerId);
         staffValidation.setValid(true);
         staffValidation.setSystemUserId(systemUserId);
         _staffValidationDao.save(staffValidation);

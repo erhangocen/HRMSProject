@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -21,6 +23,8 @@ public class JobPosition {
     @Column(name = "id")
     private int id;
 
+    @NotBlank
+    @NotNull
     @Column(name = "position_name")
     private String positionName;
 
@@ -28,4 +32,11 @@ public class JobPosition {
     @OneToMany(mappedBy = "jobPosition", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JobAdvertisement> jobAdvertisements;
 
+    @JsonIgnore
+    @OneToMany(mappedBy = "jobPosition", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<JobSeekerExperience> jobSeekerExperiences;
+
+    @JsonIgnore(value = true)
+    @OneToMany(mappedBy = "jobPosition", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<JobSeekerPosition> jobSeekerPositions;
 }

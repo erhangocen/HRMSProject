@@ -39,4 +39,14 @@ public class JobSeekerSchoolManager implements IJobSeekerSchoolService {
     public DataResult<List<JobSeekerSchool>> getAll() {
         return new SuccessDataResult<List<JobSeekerSchool>>(_jobSeekerSchoolDao.findAll());
     }
+
+    @Override
+    public DataResult<List<JobSeekerSchool>> getByUserId(int id) {
+        return new SuccessDataResult<List<JobSeekerSchool>>(_jobSeekerSchoolDao.findByUserId(id));
+    }
+
+    @Override
+    public DataResult<List<JobSeekerSchool>> getByUserIdOrderByStartYearDesc(int id) {
+        return new SuccessDataResult<List<JobSeekerSchool>>(_jobSeekerSchoolDao.findByUserIdOrderByStartYearDesc(id));
+    }
 }

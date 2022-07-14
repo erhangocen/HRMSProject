@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -19,6 +21,8 @@ public class StaffValidation {
     @Column(name = "id")
     private int id;
 
+    @NotBlank
+    @NotNull
     @Column(name = "employer_id")
     private int userId;
 

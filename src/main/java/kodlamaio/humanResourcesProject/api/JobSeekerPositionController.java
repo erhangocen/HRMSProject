@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jobseekerpositions/")
+@RequestMapping("/api/jobSeekerPositions/")
 public class JobSeekerPositionController {
 
     private IJobSeekerPositionService _jobSeekerPositionService;
@@ -26,13 +26,18 @@ public class JobSeekerPositionController {
         return ResponseEntity.ok(_jobSeekerPositionService.getAll());
     }
 
+    @GetMapping("getByUserId")
+    public ResponseEntity<?> getByUserId(int id){
+        return ResponseEntity.ok(_jobSeekerPositionService.getByUserId(id));
+    }
+
     @PostMapping("add")
-    public ResponseEntity<?> add(JobSeekerPosition jobSeekerPosition){
+    public ResponseEntity<?> add(@RequestBody JobSeekerPosition jobSeekerPosition){
         return ResponseEntity.ok(_jobSeekerPositionService.add(jobSeekerPosition));
     }
 
     @DeleteMapping("delete")
-    public ResponseEntity<?> delete(JobSeekerPosition jobSeekerPosition){
+    public ResponseEntity<?> delete(@RequestBody JobSeekerPosition jobSeekerPosition){
         return ResponseEntity.ok(_jobSeekerPositionService.delete(jobSeekerPosition));
     }
 }

@@ -8,6 +8,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -21,12 +22,17 @@ import java.util.List;
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler","employers","cities","job","job_advertisments","jobAdvertisments"})
 public class Employer extends User {
 
+    @NotBlank
+    @NotNull
     @Column(name = "company_name")
     private String companyName;
 
+    @NotBlank
+    @NotNull
     @Column(name = "web_address")
     private String webAddress;
 
+    @NotBlank
     @NotNull
     @Column(name = "phone_number")
     private String phoneNumber;

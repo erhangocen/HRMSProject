@@ -38,4 +38,14 @@ public class JobSeekerExperienceManager implements IJobSeekerExperienceService {
     public DataResult<List<JobSeekerExperience>> getAll() {
         return new SuccessDataResult<List<JobSeekerExperience>>(_jobSeekerExperienceDao.findAll());
     }
+
+    @Override
+    public DataResult<List<JobSeekerExperience>> getByUserId(int id) {
+        return new SuccessDataResult<List<JobSeekerExperience>>(_jobSeekerExperienceDao.findByUserId(id));
+    }
+
+    @Override
+    public DataResult<List<JobSeekerExperience>> getByUserIdOrderByStartDateDesc(int id) {
+        return new SuccessDataResult<List<JobSeekerExperience>>(_jobSeekerExperienceDao.findByUserIdOrderByStartDateDesc(id));
+    }
 }

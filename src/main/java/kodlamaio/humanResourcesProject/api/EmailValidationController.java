@@ -32,8 +32,8 @@ public class EmailValidationController {
     }
 
     @PostMapping("validate")
-    public ResponseEntity<?> validate(@RequestParam int emailValidationId){
-        return ResponseEntity.ok(_emailValidationService.validate(emailValidationId));
+    public ResponseEntity<?> validate(@RequestParam int userId){
+        return ResponseEntity.ok(_emailValidationService.validate(userId));
     }
 
     @GetMapping("getAll")

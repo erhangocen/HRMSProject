@@ -6,6 +6,8 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -20,11 +22,14 @@ public class JobSeekerPosition {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne()
-    @JoinColumn(name = "job_seeker_id")
-    private JobSeeker jobSeeker;
+    @NotBlank
+    @NotNull
+    @Column(name = "user_id")
+    private int userId;
 
-    @ManyToOne()
-    @JoinColumn(name = "cv_id")
-    private Cv cv;
+    @NotBlank
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "job_position_id")
+    private JobPosition jobPosition;
 }

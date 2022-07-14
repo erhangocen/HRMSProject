@@ -11,7 +11,7 @@ import java.util.List;
 public interface IEmailValidationService {
     Result add(EmailValidation emailValidation);
     Result delete(EmailValidation emailValidation);
-    Result validate(int emailValidationId);
+    Result validate(int userId);
     DataResult<List<EmailValidation>> getAll();
     DataResult<EmailValidation> getByUserId(int id);
 }

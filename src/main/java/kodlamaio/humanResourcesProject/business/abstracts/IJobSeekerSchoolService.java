@@ -11,4 +11,7 @@ public interface IJobSeekerSchoolService {
     Result delete(JobSeekerSchool jobSeekerSchool);
 
     DataResult<List<JobSeekerSchool>> getAll();
+    DataResult<List<JobSeekerSchool>> getByUserId(int id);
+
+    DataResult<List<JobSeekerSchool>> getByUserIdOrderByStartYearDesc(int id);
 }

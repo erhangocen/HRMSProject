@@ -39,4 +39,9 @@ public class JobSeekerPositionManager implements IJobSeekerPositionService {
     public DataResult<List<JobSeekerPosition>> getAll() {
         return new SuccessDataResult<List<JobSeekerPosition>>(_jobSeekerPositionDao.findAll());
     }
+
+    @Override
+    public DataResult<List<JobSeekerPosition>> getByUserId(int id) {
+        return new SuccessDataResult<List<JobSeekerPosition>>(_jobSeekerPositionDao.findByUserId(id));
+    }
 }

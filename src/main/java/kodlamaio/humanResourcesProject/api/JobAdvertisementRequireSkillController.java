@@ -35,4 +35,14 @@ public class JobAdvertisementRequireSkillController {
     public ResponseEntity<?> getAll(){
         return ResponseEntity.ok(_jobAdvertisementRequireSkillService.getAll());
     }
+
+    @GetMapping("getBySkillId")
+    public ResponseEntity<?> getBySkillId(@RequestParam int id){
+        return ResponseEntity.ok(_jobAdvertisementRequireSkillService.getBySkillId(id));
+    }
+
+    @GetMapping("getByJobAdvertisementsId")
+    public ResponseEntity<?> getByJobAdvertisementsId(@RequestParam int id){
+        return ResponseEntity.ok(_jobAdvertisementRequireSkillService.getByJobAdvertisementsId(id));
+    }
 }

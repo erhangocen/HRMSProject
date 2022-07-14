@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/systemusers/")
+@RequestMapping("/api/systemUsers/")
 public class SystemUserController {
 
     private ISystemUserService _systemUserService;

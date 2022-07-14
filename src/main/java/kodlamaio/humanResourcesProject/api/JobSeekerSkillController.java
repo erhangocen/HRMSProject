@@ -26,6 +26,11 @@ public class JobSeekerSkillController {
         return ResponseEntity.ok(_jobSeekerSkillService.getAll());
     }
 
+    @GetMapping("getByUserId")
+    public ResponseEntity<?> getByUserId(int id){
+        return ResponseEntity.ok(_jobSeekerSkillService.getByUserId(id));
+    }
+
     @PostMapping("add")
     public ResponseEntity<?> add(JobSeekerSkill jobSeekerSkill){
         return ResponseEntity.ok(_jobSeekerSkillService.add(jobSeekerSkill));

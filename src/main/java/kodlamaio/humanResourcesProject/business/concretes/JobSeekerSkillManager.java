@@ -38,4 +38,9 @@ public class JobSeekerSkillManager implements IJobSeekerSkillService {
     public DataResult<List<JobSeekerSkill>> getAll() {
         return new SuccessDataResult<List<JobSeekerSkill>>(_jobSeekerSkillDao.findAll());
     }
+
+    @Override
+    public DataResult<List<JobSeekerSkill>> getByUserId(int id) {
+        return new SuccessDataResult<List<JobSeekerSkill>>(_jobSeekerSkillDao.findByUserId(id));
+    }
 }

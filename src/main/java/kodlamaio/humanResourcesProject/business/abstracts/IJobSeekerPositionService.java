@@ -11,5 +11,6 @@ public interface IJobSeekerPositionService {
     Result add(JobSeekerPosition jobSeekerPosition);
     Result delete(JobSeekerPosition jobSeekerPosition);
     DataResult<List<JobSeekerPosition>> getAll();
+    DataResult<List<JobSeekerPosition>> getByUserId(int id);
 
 }

@@ -38,4 +38,14 @@ public class JobAdvertisementRequireSkillManager implements IJobAdvertisementReq
     public DataResult<List<JobAdvertisementRequireSkill>> getAll() {
         return new SuccessDataResult<List<JobAdvertisementRequireSkill>>(_jobAdvertisementRequireSkillDao.findAll());
     }
+
+    @Override
+    public DataResult<List<JobAdvertisementRequireSkill>> getBySkillId(int id) {
+        return new SuccessDataResult<List<JobAdvertisementRequireSkill>>(_jobAdvertisementRequireSkillDao.findBySkillId(id));
+    }
+
+    @Override
+    public DataResult<List<JobAdvertisementRequireSkill>> getByJobAdvertisementsId(int id) {
+        return new SuccessDataResult<List<JobAdvertisementRequireSkill>>(_jobAdvertisementRequireSkillDao.findByJobAdvertisementsId(id));
+    }
 }

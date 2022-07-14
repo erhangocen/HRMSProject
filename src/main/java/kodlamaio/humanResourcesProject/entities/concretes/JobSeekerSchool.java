@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -18,20 +20,27 @@ public class JobSeekerSchool {
     @Column(name = "id")
     private int id;
 
+    @NotBlank
+    @NotNull
     @Column(name = "school_name")
     private String schoolName;
+
 
     @Column(name = "department_name")
     private String departmentName;
 
+    @NotBlank
+    @NotNull
     @Column(name = "start_year")
     private int startYear;
+
 
     @Column(name = "finish_year")
     private int finishYear;
 
-    @ManyToOne()
-    @JoinColumn(name = "cv_id")
-    private Cv cv;
+    @NotBlank
+    @NotNull
+    @Column(name = "user_id")
+    private int userId;
 
 }

@@ -38,4 +38,14 @@ public class JobSeekerLanguageManager implements IJobSeekerLanguageService {
     public DataResult<List<JobSeekerLanguage>> getAll() {
         return new SuccessDataResult<List<JobSeekerLanguage>>(_jobSeekerLanguageDao.findAll());
     }
+
+    @Override
+    public DataResult<List<JobSeekerLanguage>> getByUserId(int id) {
+        return new SuccessDataResult<List<JobSeekerLanguage>>(_jobSeekerLanguageDao.findByUserId(id));
+    }
+
+    @Override
+    public DataResult<List<JobSeekerLanguage>> getByUserIdOrderByLevelDesc(int id) {
+        return new SuccessDataResult<List<JobSeekerLanguage>>(_jobSeekerLanguageDao.findByUserIdOrderByLevelDesc(id));
+    }
 }

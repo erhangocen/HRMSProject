@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface IJobSeekerDao extends JpaRepository<JobSeeker,Integer> {
     List<JobSeeker> findByNationalId(String nationalId);
+    JobSeeker findById(int id);
 }

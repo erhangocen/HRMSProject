@@ -11,4 +11,7 @@ public interface IJobSeekerExperienceService {
     Result delete(JobSeekerExperience jobSeekerExperience);
 
     DataResult<List<JobSeekerExperience>> getAll();
+    DataResult<List<JobSeekerExperience>> getByUserId(int id);
+
+    DataResult<List<JobSeekerExperience>> getByUserIdOrderByStartDateDesc(int id);
 }

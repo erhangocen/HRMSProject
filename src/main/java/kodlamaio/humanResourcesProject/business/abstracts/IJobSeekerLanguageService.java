@@ -11,4 +11,6 @@ public interface IJobSeekerLanguageService {
     Result delete(JobSeekerLanguage jobSeekerLanguage);
 
     DataResult<List<JobSeekerLanguage>> getAll();
+    DataResult<List<JobSeekerLanguage>> getByUserId(int id);
+    DataResult<List<JobSeekerLanguage>> getByUserIdOrderByLevelDesc(int id);
 }

@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Data
@@ -22,9 +24,13 @@ public class City {
     @Column(name = "id")
     private int id;
 
+    @NotBlank
+    @NotNull
     @Column(name = "city_name")
     private String cityName;
 
+    @NotBlank
+    @NotNull
     @Column(name = "country_name")
     private String countryName;
 

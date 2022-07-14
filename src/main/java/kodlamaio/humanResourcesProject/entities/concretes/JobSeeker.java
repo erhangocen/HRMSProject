@@ -21,21 +21,25 @@ import java.util.List;
 @Table(name = "job_seekers")
 public class JobSeeker extends User {
 
+    @NotBlank
     @NotNull
     @NotBlank
     @Column(name = "first_name")
     private String firstName;
 
+    @NotBlank
     @NotNull
     @NotBlank
     @Column(name = "last_name")
     private String lastName;
 
+    @NotBlank
     @NotNull
     @NotBlank
     @Column(name = "national_id")
     private String nationalId;
 
+    @NotBlank
     @NotNull
     @NotBlank
     @Column(name = "birth_year")

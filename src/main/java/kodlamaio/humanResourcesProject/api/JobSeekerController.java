@@ -12,7 +12,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/jobseekers/")
+@RequestMapping("/api/jobSeekers/")
 public class JobSeekerController {
 
     private IJobSeekerService _jobSeekerService;
@@ -27,13 +27,33 @@ public class JobSeekerController {
         return ResponseEntity.ok(_jobSeekerService.getAll());
     }
 
+    @GetMapping("getCv")
+    public ResponseEntity<?> getCv(@RequestParam int userId){
+        return ResponseEntity.ok(_jobSeekerService.getCv(userId));
+    }
+
     @PostMapping("add")
-    public ResponseEntity<?> add(JobSeeker jobSeeker) throws Exception{
-        return ResponseEntity.ok(_jobSeekerService.getAll());
+    public ResponseEntity<?> add(@RequestBody JobSeeker jobSeeker) throws Exception{
+        return ResponseEntity.ok(_jobSeekerService.add(jobSeeker));
     }
 
     @DeleteMapping("delete")
-    public ResponseEntity<?> delete(JobSeeker jobSeeker){
+    public ResponseEntity<?> delete(@RequestBody JobSeeker jobSeeker){
         return ResponseEntity.ok(_jobSeekerService.delete(jobSeeker));
+    }
+
+    @PostMapping("updateGithub")
+    public ResponseEntity<?> updateGithub(@RequestParam int userId,@RequestParam String link){
+        return ResponseEntity.ok(_jobSeekerService.updateGithub(userId,link));
+    }
+
+    @PostMapping("updateLinkedin")
+    public ResponseEntity<?> updateLinkedin(@RequestParam int userId,@RequestParam String link){
+        return ResponseEntity.ok(_jobSeekerService.updateLinkedin(userId,link));
+    }
+
+    @PostMapping("updateCoverLetter")
+    public ResponseEntity<?> updateCoverLetter(@RequestParam int userId,@RequestParam String coverLetter){
+        return ResponseEntity.ok(_jobSeekerService.updateCoverLetter(userId,coverLetter));
     }
 }

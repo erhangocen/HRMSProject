@@ -7,6 +7,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Data
 @Entity
@@ -20,10 +22,13 @@ public class JobAdvertisementRequireSkill {
     @Column(name = "id")
     private int id;
 
+    @NotBlank
+    @NotNull
     @Column(name = "job_advertisements_id")
-    private int JobAdvertisementsId;
+    private int jobAdvertisementsId;
 
-
+    @NotBlank
+    @NotNull
     @Column(name = "skill_id")
     private int skillId;
 }
