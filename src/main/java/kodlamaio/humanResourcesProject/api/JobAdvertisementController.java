@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 
@@ -23,7 +24,7 @@ public class JobAdvertisementController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<?> add(@RequestBody JobAdvertisement jobAdvertisement){
+    public ResponseEntity<?> add(@Valid @RequestBody JobAdvertisement jobAdvertisement){
         return ResponseEntity.ok(_jobAdvertisementService.add(jobAdvertisement));
     }
 

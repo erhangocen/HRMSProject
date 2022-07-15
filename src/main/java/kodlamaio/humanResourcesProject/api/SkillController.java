@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,7 +28,7 @@ public class SkillController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<?> add(Skill skill){
+    public ResponseEntity<?> add(@Valid @RequestBody Skill skill){
         return ResponseEntity.ok(_skillService.add(skill));
     }
 

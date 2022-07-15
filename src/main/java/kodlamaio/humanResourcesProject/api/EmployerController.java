@@ -13,6 +13,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,7 +35,7 @@ public class EmployerController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<?> add(@RequestBody Employer employer){
+    public ResponseEntity<?> add(@Valid @RequestBody Employer employer){
         return ResponseEntity.ok(_employerService.add(employer));
     }
 
@@ -50,7 +51,7 @@ public class EmployerController {
     }
 
     @PostMapping("update")
-    public ResponseEntity<?> update(@RequestBody Employer employer){
+    public ResponseEntity<?> update(@Valid @RequestBody Employer employer){
         return ResponseEntity.ok(_employerService.update(employer));
     }
 

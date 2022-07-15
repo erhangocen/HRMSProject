@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -32,7 +33,7 @@ public class JobSeekerPositionController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<?> add(@RequestBody JobSeekerPosition jobSeekerPosition){
+    public ResponseEntity<?> add(@Valid @RequestBody JobSeekerPosition jobSeekerPosition){
         return ResponseEntity.ok(_jobSeekerPositionService.add(jobSeekerPosition));
     }
 
