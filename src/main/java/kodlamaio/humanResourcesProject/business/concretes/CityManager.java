@@ -19,7 +19,7 @@ public class CityManager implements ICityService {
 
     @Autowired
     public CityManager(ICityDao cityDao) {
-        this._cityDao = cityDao;
+        _cityDao = cityDao;
     }
 
     @Override

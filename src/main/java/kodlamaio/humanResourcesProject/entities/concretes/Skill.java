@@ -24,7 +24,7 @@ public class Skill {
     @Column(name = "id")
     private int id;
 
-    @NotBlank
+
     @NotNull
     @Column(name = "skill_name")
     private String skillName;

@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "job_seekers_skills")
+@Table(name = "job_seeker_skills")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class JobSeekerSkill {
 
@@ -22,13 +22,12 @@ public class JobSeekerSkill {
     @Column(name = "id")
     private int id;
 
-    @NotBlank
     @NotNull
     @JoinColumn(name = "skill_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Skill skill;
 
-    @NotBlank
+
     @NotNull
     @Column(name = "user_id")
     private int userId;

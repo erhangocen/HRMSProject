@@ -26,10 +26,10 @@ public class EmployerManager implements IEmployerService {
     @Autowired
     public EmployerManager(IEmployerDao employerDao, IUserService userService, IStaffValidationService staffValidationService, IEmailValidationService emailValidationService) {
         super();
-        this._employerDao = employerDao;
-        this._userService = userService;
-        this._staffValidationService = staffValidationService;
-        this._emailValidationService = emailValidationService;
+        _employerDao = employerDao;
+        _userService = userService;
+        _staffValidationService = staffValidationService;
+        _emailValidationService = emailValidationService;
     }
 
     @Override

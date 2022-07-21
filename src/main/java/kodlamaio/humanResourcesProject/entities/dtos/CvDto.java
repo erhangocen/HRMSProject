@@ -13,6 +13,8 @@ import java.util.List;
 public class CvDto {
     private JobSeeker jobSeeker;
     private Photo photo;
+    private List<JobSeekerCertificate> jobSeekerCertificates;
+    private List<JobSeekerReference> jobSeekerReferences;
     private List<JobSeekerSkill> jobSeekerSkills;
     private List<JobSeekerExperience> jobSeekerExperiences;
     private List<JobSeekerPosition> jobSeekerPositions;

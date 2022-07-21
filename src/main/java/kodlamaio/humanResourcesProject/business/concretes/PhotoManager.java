@@ -21,9 +21,9 @@ public class PhotoManager implements IPhotoService {
 
     @Autowired
     public PhotoManager(IPhotoDao photoDao, ImageUploaderService imageUploaderService, IUserService userService) {
-        this._photoDao = photoDao;
-        this._imageUploaderService = imageUploaderService;
-        this._userService = userService;
+        _photoDao = photoDao;
+        _imageUploaderService = imageUploaderService;
+        _userService = userService;
     }
 
     @Override

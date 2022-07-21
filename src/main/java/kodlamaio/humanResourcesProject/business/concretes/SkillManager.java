@@ -19,7 +19,7 @@ public class SkillManager implements ISkillService {
 
     @Autowired
     public SkillManager(ISkillDao skillDao) {
-        this._skillDao = skillDao;
+        _skillDao = skillDao;
     }
 
     @Override

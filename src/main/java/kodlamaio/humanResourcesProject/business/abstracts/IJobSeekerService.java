@@ -4,6 +4,7 @@ import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeeker;
 import kodlamaio.humanResourcesProject.entities.dtos.CvDto;
+import kodlamaio.humanResourcesProject.entities.dtos.JobSeekerCoverLetterDto;
 import kodlamaio.humanResourcesProject.entities.dtos.JobSeekerLinksDto;
 
 import java.util.List;
@@ -13,6 +14,6 @@ public interface IJobSeekerService {
     Result delete(JobSeeker jobSeeker);
     DataResult<CvDto> getCv(int userId);
     Result updateLinks(JobSeekerLinksDto jobSeekerLinksDto);
-    Result updateCoverLetter(int userId,String coverLetter);
+    Result updateCoverLetter(JobSeekerCoverLetterDto jobSeekerCoverLetterDto);
     DataResult<List<JobSeeker>> getAll();
 }

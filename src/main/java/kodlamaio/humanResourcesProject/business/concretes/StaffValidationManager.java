@@ -20,7 +20,7 @@ public class StaffValidationManager implements IStaffValidationService {
     @Autowired
     public StaffValidationManager(IStaffValidationDao _staffValidationDao) {
         super();
-        this._staffValidationDao = _staffValidationDao;
+        _staffValidationDao = _staffValidationDao;
     }
 
     @Override

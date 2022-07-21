@@ -11,4 +11,5 @@ public interface IJobSeekerSkillService {
     Result delete(JobSeekerSkill jobSeekerSkill);
     DataResult<List<JobSeekerSkill>> getAll();
     DataResult<List<JobSeekerSkill>> getByUserId(int id);
+
 }

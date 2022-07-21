@@ -19,7 +19,7 @@ public class LanguageManager implements ILanguageService {
 
     @Autowired
     public LanguageManager(ILanguageDao languageDao) {
-        this._languageDao = languageDao;
+        _languageDao = languageDao;
     }
 
     @Override

@@ -22,20 +22,17 @@ public class JobSeekerLanguage {
     @Column(name = "id")
     private int id;
 
-    @NotBlank
     @NotNull
     @JoinColumn(name = "language_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Language language;
 
-    @NotBlank
     @NotNull
     @Min(1)
     @Max(5)
     @Column(name = "level")
     private int level;
 
-    @NotBlank
     @NotNull
     @Column(name = "user_id")
     private int userId;

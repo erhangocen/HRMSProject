@@ -8,6 +8,8 @@ import kodlamaio.humanResourcesProject.core.utilities.results.SuccessResult;
 import kodlamaio.humanResourcesProject.dataAccess.abstracts.IJobSeekerSkillDao;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeekerSkill;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,7 +21,7 @@ public class JobSeekerSkillManager implements IJobSeekerSkillService {
 
     @Autowired
     public JobSeekerSkillManager(IJobSeekerSkillDao jobSeekerSkillDao) {
-        this._jobSeekerSkillDao = jobSeekerSkillDao;
+        _jobSeekerSkillDao = jobSeekerSkillDao;
     }
 
     @Override
@@ -43,4 +45,5 @@ public class JobSeekerSkillManager implements IJobSeekerSkillService {
     public DataResult<List<JobSeekerSkill>> getByUserId(int id) {
         return new SuccessDataResult<List<JobSeekerSkill>>(_jobSeekerSkillDao.findByUserId(id));
     }
+
 }

@@ -4,6 +4,7 @@ import kodlamaio.humanResourcesProject.business.abstracts.IJobSeekerService;
 import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeeker;
+import kodlamaio.humanResourcesProject.entities.dtos.JobSeekerCoverLetterDto;
 import kodlamaio.humanResourcesProject.entities.dtos.JobSeekerLinksDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -51,7 +52,7 @@ public class JobSeekerController {
     }
 
     @PostMapping("updateCoverLetter")
-    public ResponseEntity<?> updateCoverLetter(@RequestParam int userId,@RequestParam String coverLetter){
-        return ResponseEntity.ok(_jobSeekerService.updateCoverLetter(userId,coverLetter));
+    public ResponseEntity<?> updateCoverLetter(@RequestBody JobSeekerCoverLetterDto jobSeekerCoverLetterDto){
+        return ResponseEntity.ok(_jobSeekerService.updateCoverLetter(jobSeekerCoverLetterDto));
     }
 }

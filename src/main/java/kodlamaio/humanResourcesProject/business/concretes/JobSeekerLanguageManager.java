@@ -19,7 +19,7 @@ public class JobSeekerLanguageManager implements IJobSeekerLanguageService {
 
     @Autowired
     public JobSeekerLanguageManager(IJobSeekerLanguageDao jobSeekerLanguageDao) {
-        this._jobSeekerLanguageDao = jobSeekerLanguageDao;
+        _jobSeekerLanguageDao = jobSeekerLanguageDao;
     }
 
     @Override

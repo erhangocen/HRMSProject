@@ -13,7 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jobPositions/")
+@RequestMapping("/api/jobPosition/")
 @CrossOrigin
 public class JobPositionsController {
 

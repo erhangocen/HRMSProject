@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/jobSeekerPositions/")
+@RequestMapping("/api/jobSeekerPosition/")
 @CrossOrigin
 public class JobSeekerPositionController {
 

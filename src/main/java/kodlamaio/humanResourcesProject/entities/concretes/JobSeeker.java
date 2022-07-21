@@ -56,7 +56,6 @@ public class JobSeeker extends User {
     @Column(name = "cover_letter")
     private String coverLetter;
 
-    @NotBlank
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")

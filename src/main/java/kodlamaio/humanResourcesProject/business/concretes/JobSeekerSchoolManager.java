@@ -19,7 +19,7 @@ public class JobSeekerSchoolManager implements IJobSeekerSchoolService {
 
     @Autowired
     public JobSeekerSchoolManager(IJobSeekerSchoolDao jobSeekerSchoolDao) {
-        this._jobSeekerSchoolDao = jobSeekerSchoolDao;
+        _jobSeekerSchoolDao = jobSeekerSchoolDao;
     }
 
 

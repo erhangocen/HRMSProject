@@ -18,8 +18,8 @@ public class SystemUserManager implements ISystemUserService {
     private ISystemUserDao _systemUserDao;
 
     @Autowired
-    public SystemUserManager(ISystemUserDao _systemUserDao) {
-        this._systemUserDao = _systemUserDao;
+    public SystemUserManager(ISystemUserDao systemUserDao) {
+        _systemUserDao = systemUserDao;
     }
 
 

@@ -24,8 +24,8 @@ public class JobAdvertisementManager implements IJobAdvertisementService {
 
     @Autowired
     public JobAdvertisementManager(IJobAdvertisementDao jobAdvertisementDao, IEmailValidationService emailValidationService, IStaffValidationService staffValidationService) {
-        this._jobAdvertisementDao = jobAdvertisementDao;
-        this._emailValidationService = emailValidationService;
+        _jobAdvertisementDao = jobAdvertisementDao;
+        _emailValidationService = emailValidationService;
         _staffValidationService = staffValidationService;
     }
 

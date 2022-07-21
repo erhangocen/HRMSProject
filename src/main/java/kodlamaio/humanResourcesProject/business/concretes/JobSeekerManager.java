@@ -9,6 +9,7 @@ import kodlamaio.humanResourcesProject.entities.concretes.EmailValidation;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeeker;
 import kodlamaio.humanResourcesProject.entities.concretes.Photo;
 import kodlamaio.humanResourcesProject.entities.dtos.CvDto;
+import kodlamaio.humanResourcesProject.entities.dtos.JobSeekerCoverLetterDto;
 import kodlamaio.humanResourcesProject.entities.dtos.JobSeekerLinksDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,22 +30,24 @@ public class JobSeekerManager implements IJobSeekerService {
     private IJobSeekerSchoolService _jobSeekerSchoolService;
     private IJobSeekerSkillService _jobSeekerSkillService;
     private IPhotoService _photoService;
-    private ICityService _cityService;
+    private IJobSeekerReferenceService _jobSeekerReferenceService;
+    private IJobSeekerCertificateService _jobSeekerCertificateService;
 
     @Autowired
-    public JobSeekerManager(IJobSeekerDao jobSeekerDao, IUserService userManager, IMernisCheckService mernisCheckService, IEmailValidationService emailValidationService, IJobSeekerExperienceService jobSeekerExperienceService, IJobSeekerLanguageService jobSeekerLanguageService, IJobSeekerPositionService jobSeekerPositionService, IJobSeekerSchoolService jobSeekerSchoolService, IJobSeekerSkillService jobSeekerSkillService, IPhotoService photoService, ICityService cityService) {
+    public JobSeekerManager(IJobSeekerDao jobSeekerDao, IUserService userManager, IMernisCheckService mernisCheckService, IEmailValidationService emailValidationService, IJobSeekerExperienceService jobSeekerExperienceService, IJobSeekerLanguageService jobSeekerLanguageService, IJobSeekerPositionService jobSeekerPositionService, IJobSeekerSchoolService jobSeekerSchoolService, IJobSeekerSkillService jobSeekerSkillService, IPhotoService photoService, ICityService cityService, IJobSeekerReferenceService jobSeekerReferenceService, IJobSeekerCertificateService jobSeekerCertificateService) {
         super();
-        this._jobSeekerDao = jobSeekerDao;
-        this._userManager = userManager;
-        this._mernisCheckService = mernisCheckService;
-        this._emailValidationService = emailValidationService;
-        this._jobSeekerExperienceService = jobSeekerExperienceService;
-        this._jobSeekerLanguageService = jobSeekerLanguageService;
-        this._jobSeekerPositionService = jobSeekerPositionService;
-        this._jobSeekerSchoolService = jobSeekerSchoolService;
-        this._jobSeekerSkillService = jobSeekerSkillService;
-        this._photoService = photoService;
-        this._cityService = cityService;
+        _jobSeekerDao = jobSeekerDao;
+        _userManager = userManager;
+        _mernisCheckService = mernisCheckService;
+        _emailValidationService = emailValidationService;
+        _jobSeekerExperienceService = jobSeekerExperienceService;
+        _jobSeekerLanguageService = jobSeekerLanguageService;
+        _jobSeekerPositionService = jobSeekerPositionService;
+        _jobSeekerSchoolService = jobSeekerSchoolService;
+        _jobSeekerSkillService = jobSeekerSkillService;
+        _photoService = photoService;
+        _jobSeekerReferenceService = jobSeekerReferenceService;
+        _jobSeekerCertificateService = jobSeekerCertificateService;
     }
 
     @Override
@@ -104,6 +107,8 @@ public class JobSeekerManager implements IJobSeekerService {
         JobSeeker jobSeeker = _jobSeekerDao.findById(userId);
         cvDto.setJobSeeker(jobSeeker);
         cvDto.setPhoto(_photoService.getByUserId(userId).getData());
+        cvDto.setJobSeekerCertificates(_jobSeekerCertificateService.getAllCertificatesByUserId(userId).getData());
+        cvDto.setJobSeekerReferences(_jobSeekerReferenceService.getAllReferencesByUserId(userId).getData());
         cvDto.setJobSeekerExperiences(_jobSeekerExperienceService.getByUserIdOrderByStartDateDesc(userId).getData());
         cvDto.setJobSeekerLanguages(_jobSeekerLanguageService.getByUserIdOrderByLevelDesc(userId).getData());
         cvDto.setJobSeekerPositions(_jobSeekerPositionService.getByUserId(userId).getData());
@@ -125,9 +130,9 @@ public class JobSeekerManager implements IJobSeekerService {
 
 
     @Override
-    public Result updateCoverLetter(int userId, String coverLetter) {
-        JobSeeker jobSeeker = _jobSeekerDao.findById(userId);
-        jobSeeker.setCoverLetter(coverLetter);
+    public Result updateCoverLetter(JobSeekerCoverLetterDto jobSeekerCoverLetterDto) {
+        JobSeeker jobSeeker = _jobSeekerDao.findById(jobSeekerCoverLetterDto.getUserId());
+        jobSeeker.setCoverLetter(jobSeekerCoverLetterDto.getCoverLetter());
         _jobSeekerDao.save(jobSeeker);
         return new SuccessResult();
     }

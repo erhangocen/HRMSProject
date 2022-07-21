@@ -18,9 +18,9 @@ public class JobSeekerPositionManager implements IJobSeekerPositionService {
     private IJobSeekerPositionDao _jobSeekerPositionDao;
 
     @Autowired
-    public JobSeekerPositionManager(IJobSeekerPositionDao _jobSeekerPositionDao) {
+    public JobSeekerPositionManager(IJobSeekerPositionDao jobSeekerPositionDao) {
         super();
-        this._jobSeekerPositionDao = _jobSeekerPositionDao;
+        _jobSeekerPositionDao = jobSeekerPositionDao;
     }
 
     @Override

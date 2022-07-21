@@ -29,7 +29,6 @@ public class JobSeekerSchool {
     @Column(name = "department_name")
     private String departmentName;
 
-    @NotBlank
     @NotNull
     @Column(name = "start_year")
     private int startYear;
@@ -38,7 +37,6 @@ public class JobSeekerSchool {
     @Column(name = "finish_year")
     private int finishYear;
 
-    @NotBlank
     @NotNull
     @Column(name = "user_id")
     private int userId;

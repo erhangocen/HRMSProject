@@ -19,7 +19,7 @@ public class JobAdvertisementRequireSkillManager implements IJobAdvertisementReq
 
     @Autowired
     public JobAdvertisementRequireSkillManager(IJobAdvertisementRequireSkillDao jobAdvertisementRequireSkillDao) {
-        this._jobAdvertisementRequireSkillDao = jobAdvertisementRequireSkillDao;
+        _jobAdvertisementRequireSkillDao = jobAdvertisementRequireSkillDao;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class JobSeekerExperienceManager implements IJobSeekerExperienceService {
 
     @Autowired
     public JobSeekerExperienceManager(IJobSeekerExperienceDao jobSeekerExperienceDao) {
-        this._jobSeekerExperienceDao = jobSeekerExperienceDao;
+        _jobSeekerExperienceDao = jobSeekerExperienceDao;
     }
 
     @Override

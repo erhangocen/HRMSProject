@@ -17,7 +17,7 @@ public class JobSeekerFavoriteManager implements IJobSeekerFavoriteService {
     private IJobSeekerFavoriteDao _jobSeekerFavoriteDao;
 
     public JobSeekerFavoriteManager(IJobSeekerFavoriteDao jobSeekerFavoriteDao) {
-        this._jobSeekerFavoriteDao = jobSeekerFavoriteDao;
+        _jobSeekerFavoriteDao = jobSeekerFavoriteDao;
     }
 
     @Override

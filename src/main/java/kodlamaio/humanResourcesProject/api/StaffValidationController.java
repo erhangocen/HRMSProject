@@ -12,7 +12,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/staffValidations/")
+@RequestMapping("/api/staffValidation/")
 @CrossOrigin
 public class StaffValidationController {
 

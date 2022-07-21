@@ -17,8 +17,8 @@ public class UserManager implements IUserService {
     private IEmailValidationDao _emailValidationDao;
 
     public UserManager(IUserDao userDao, IEmailValidationDao emailValidationDao) {
-        this._userDao = userDao;
-        this._emailValidationDao = emailValidationDao;
+        _userDao = userDao;
+        _emailValidationDao = emailValidationDao;
     }
 
     @Override

@@ -14,7 +14,7 @@ import javax.validation.constraints.NotNull;
 @EqualsAndHashCode(callSuper=false)
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "job_seekers_positions")
+@Table(name = "job_seeker_positions")
 public class JobSeekerPosition {
 
     @Id
@@ -22,12 +22,10 @@ public class JobSeekerPosition {
     @Column(name = "id")
     private int id;
 
-    @NotBlank
     @NotNull
     @Column(name = "user_id")
     private int userId;
 
-    @NotBlank
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "job_position_id")

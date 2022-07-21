@@ -19,7 +19,7 @@ public class EmailValidationManager implements IEmailValidationService {
 
     @Autowired
     public EmailValidationManager(IEmailValidationDao emailValidationDao) {
-        this._emailValidationDao = emailValidationDao;
+        _emailValidationDao = emailValidationDao;
     }
 
     @Override
