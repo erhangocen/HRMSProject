@@ -24,7 +24,7 @@ public class JobSeekerExperience {
     @Column(name = "id")
     private int id;
 
-    @NotBlank
+
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "position_id")
@@ -34,6 +34,11 @@ public class JobSeekerExperience {
     @NotNull
     @Column(name = "workplace_name")
     private String workplaceName;
+
+    @NotBlank
+    @NotNull
+    @Column(name = "experience_explanation")
+    private String experienceExplanation;
 
     @NotNull
     @Column(name = "start_date")

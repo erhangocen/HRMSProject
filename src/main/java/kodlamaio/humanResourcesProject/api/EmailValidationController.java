@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/emailValidation/")
+@CrossOrigin
 public class EmailValidationController {
 
     private IEmailValidationService _emailValidationService;

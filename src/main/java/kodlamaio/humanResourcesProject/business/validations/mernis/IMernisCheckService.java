@@ -1,4 +1,4 @@
-package kodlamaio.humanResourcesProject.business.validations;
+package kodlamaio.humanResourcesProject.business.validations.mernis;
 
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeeker;

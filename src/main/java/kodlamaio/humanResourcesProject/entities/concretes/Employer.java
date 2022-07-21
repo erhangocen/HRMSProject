@@ -34,8 +34,9 @@ public class Employer extends User {
 
     @NotBlank
     @NotNull
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+    private City city;
 
     @JsonIgnore
     @OneToMany(mappedBy = "employer", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)

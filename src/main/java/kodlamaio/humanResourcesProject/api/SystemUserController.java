@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/systemUsers/")
+@CrossOrigin
 public class SystemUserController {
 
     private ISystemUserService _systemUserService;

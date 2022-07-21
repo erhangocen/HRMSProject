@@ -38,4 +38,9 @@ public class CityManager implements ICityService {
     public DataResult<List<City>> getAll() {
         return new SuccessDataResult<List<City>>(_cityDao.findAll());
     }
+
+    @Override
+    public DataResult<City> getById(int id) {
+        return new SuccessDataResult<City>(_cityDao.findById(id));
+    }
 }

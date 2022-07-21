@@ -1,10 +1,7 @@
 package kodlamaio.humanResourcesProject.business.concretes;
 
 import kodlamaio.humanResourcesProject.business.abstracts.IJobSeekerExperienceService;
-import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
-import kodlamaio.humanResourcesProject.core.utilities.results.Result;
-import kodlamaio.humanResourcesProject.core.utilities.results.SuccessDataResult;
-import kodlamaio.humanResourcesProject.core.utilities.results.SuccessResult;
+import kodlamaio.humanResourcesProject.core.utilities.results.*;
 import kodlamaio.humanResourcesProject.dataAccess.abstracts.IJobSeekerExperienceDao;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeekerExperience;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -23,25 +23,21 @@ public class JobSeeker extends User {
 
     @NotBlank
     @NotNull
-    @NotBlank
     @Column(name = "first_name")
     private String firstName;
 
     @NotBlank
     @NotNull
-    @NotBlank
     @Column(name = "last_name")
     private String lastName;
 
     @NotBlank
     @NotNull
-    @NotBlank
     @Column(name = "national_id")
     private String nationalId;
 
     @NotBlank
     @NotNull
-    @NotBlank
     @Column(name = "birth_year")
     private String birthYear;
 
@@ -51,6 +47,18 @@ public class JobSeeker extends User {
     @Column(name = "github_link")
     private String githubLink;
 
+    @Column(name = "instagram_link")
+    private String instagramLink;
+
+    @Column(name = "twitter_link")
+    private String twitterLink;
+
     @Column(name = "cover_letter")
     private String coverLetter;
+
+    @NotBlank
+    @NotNull
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+    private City city;
 }

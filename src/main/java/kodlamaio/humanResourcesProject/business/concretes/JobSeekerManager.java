@@ -2,13 +2,14 @@ package kodlamaio.humanResourcesProject.business.concretes;
 
 
 import kodlamaio.humanResourcesProject.business.abstracts.*;
-import kodlamaio.humanResourcesProject.business.validations.IMernisCheckService;
+import kodlamaio.humanResourcesProject.business.validations.mernis.IMernisCheckService;
 import kodlamaio.humanResourcesProject.core.utilities.results.*;
 import kodlamaio.humanResourcesProject.dataAccess.abstracts.IJobSeekerDao;
 import kodlamaio.humanResourcesProject.entities.concretes.EmailValidation;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeeker;
 import kodlamaio.humanResourcesProject.entities.concretes.Photo;
 import kodlamaio.humanResourcesProject.entities.dtos.CvDto;
+import kodlamaio.humanResourcesProject.entities.dtos.JobSeekerLinksDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,9 +29,10 @@ public class JobSeekerManager implements IJobSeekerService {
     private IJobSeekerSchoolService _jobSeekerSchoolService;
     private IJobSeekerSkillService _jobSeekerSkillService;
     private IPhotoService _photoService;
+    private ICityService _cityService;
 
     @Autowired
-    public JobSeekerManager(IJobSeekerDao jobSeekerDao, IUserService userManager, IMernisCheckService mernisCheckService, IEmailValidationService emailValidationService, IJobSeekerExperienceService jobSeekerExperienceService, IJobSeekerLanguageService jobSeekerLanguageService, IJobSeekerPositionService jobSeekerPositionService, IJobSeekerSchoolService jobSeekerSchoolService, IJobSeekerSkillService jobSeekerSkillService, IPhotoService photoService) {
+    public JobSeekerManager(IJobSeekerDao jobSeekerDao, IUserService userManager, IMernisCheckService mernisCheckService, IEmailValidationService emailValidationService, IJobSeekerExperienceService jobSeekerExperienceService, IJobSeekerLanguageService jobSeekerLanguageService, IJobSeekerPositionService jobSeekerPositionService, IJobSeekerSchoolService jobSeekerSchoolService, IJobSeekerSkillService jobSeekerSkillService, IPhotoService photoService, ICityService cityService) {
         super();
         this._jobSeekerDao = jobSeekerDao;
         this._userManager = userManager;
@@ -42,6 +44,7 @@ public class JobSeekerManager implements IJobSeekerService {
         this._jobSeekerSchoolService = jobSeekerSchoolService;
         this._jobSeekerSkillService = jobSeekerSkillService;
         this._photoService = photoService;
+        this._cityService = cityService;
     }
 
     @Override
@@ -98,7 +101,8 @@ public class JobSeekerManager implements IJobSeekerService {
     @Override
     public DataResult<CvDto> getCv(int userId) {
         CvDto cvDto = new CvDto();
-        cvDto.setJobSeeker(_jobSeekerDao.findById(userId));
+        JobSeeker jobSeeker = _jobSeekerDao.findById(userId);
+        cvDto.setJobSeeker(jobSeeker);
         cvDto.setPhoto(_photoService.getByUserId(userId).getData());
         cvDto.setJobSeekerExperiences(_jobSeekerExperienceService.getByUserIdOrderByStartDateDesc(userId).getData());
         cvDto.setJobSeekerLanguages(_jobSeekerLanguageService.getByUserIdOrderByLevelDesc(userId).getData());
@@ -109,20 +113,16 @@ public class JobSeekerManager implements IJobSeekerService {
     }
 
     @Override
-    public Result updateGithub(int userId, String link) {
-        JobSeeker jobSeeker = _jobSeekerDao.findById(userId);
-        jobSeeker.setGithubLink(link);
+    public Result updateLinks(JobSeekerLinksDto jobSeekerLinksDto) {
+        JobSeeker jobSeeker = _jobSeekerDao.findById(jobSeekerLinksDto.getUserId());
+        jobSeeker.setGithubLink(jobSeekerLinksDto.getGithubLink());
+        jobSeeker.setLinkedinLink(jobSeekerLinksDto.getLinkedinLink());
+        jobSeeker.setInstagramLink(jobSeekerLinksDto.getInstagramLink());
+        jobSeeker.setTwitterLink(jobSeekerLinksDto.getTwitterLink());
         _jobSeekerDao.save(jobSeeker);
         return new SuccessResult();
     }
 
-    @Override
-    public Result updateLinkedin(int userId, String link) {
-        JobSeeker jobSeeker = _jobSeekerDao.findById(userId);
-        jobSeeker.setLinkedinLink(link);
-        _jobSeekerDao.save(jobSeeker);
-        return new SuccessResult();
-    }
 
     @Override
     public Result updateCoverLetter(int userId, String coverLetter) {

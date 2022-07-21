@@ -4,6 +4,7 @@ import kodlamaio.humanResourcesProject.business.abstracts.IJobSeekerService;
 import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.JobSeeker;
+import kodlamaio.humanResourcesProject.entities.dtos.JobSeekerLinksDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,8 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/api/jobSeekers/")
+@RequestMapping("/api/jobSeeker/")
+@CrossOrigin
 public class JobSeekerController {
 
     private IJobSeekerService _jobSeekerService;
@@ -43,14 +45,9 @@ public class JobSeekerController {
         return ResponseEntity.ok(_jobSeekerService.delete(jobSeeker));
     }
 
-    @PostMapping("updateGithub")
-    public ResponseEntity<?> updateGithub(@RequestParam int userId,@RequestParam String link){
-        return ResponseEntity.ok(_jobSeekerService.updateGithub(userId,link));
-    }
-
-    @PostMapping("updateLinkedin")
-    public ResponseEntity<?> updateLinkedin(@RequestParam int userId,@RequestParam String link){
-        return ResponseEntity.ok(_jobSeekerService.updateLinkedin(userId,link));
+    @PostMapping("updateLinks")
+    public ResponseEntity<?> updateLinks(@RequestBody JobSeekerLinksDto jobSeekerLinksDto){
+        return ResponseEntity.ok(_jobSeekerService.updateLinks(jobSeekerLinksDto));
     }
 
     @PostMapping("updateCoverLetter")

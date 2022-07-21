@@ -13,6 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/staffValidations/")
+@CrossOrigin
 public class StaffValidationController {
 
     private IStaffValidationService _staffValidationService;

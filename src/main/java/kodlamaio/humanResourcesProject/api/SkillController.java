@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/skill/")
+@CrossOrigin
 public class SkillController {
     private ISkillService _skillService;
 

@@ -1,5 +1,6 @@
-package kodlamaio.humanResourcesProject.business.validations;
+package kodlamaio.humanResourcesProject.business.validations.mernis;
 
+import kodlamaio.humanResourcesProject.business.validations.mernis.IMernisCheckService;
 import kodlamaio.humanResourcesProject.core.Security.Mernis.KPSPublicSoapProxy;
 import kodlamaio.humanResourcesProject.core.utilities.results.ErrorResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;

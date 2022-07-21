@@ -37,4 +37,12 @@ public class City {
     @JsonIgnore(value = true)
     @OneToMany(mappedBy = "city", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<JobAdvertisement> jobAdvertisements;
+
+    @JsonIgnore(value = true)
+    @OneToMany(mappedBy = "city", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<JobSeeker> jobSeekers;
+
+    @JsonIgnore(value = true)
+    @OneToMany(mappedBy = "city", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Employer> employers;
 }

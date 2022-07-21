@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobAdvertisementRequireSkill/")
+@CrossOrigin
 public class JobAdvertisementRequireSkillController {
     private IJobAdvertisementRequireSkillService _jobAdvertisementRequireSkillService;
 
@@ -44,6 +45,6 @@ public class JobAdvertisementRequireSkillController {
 
     @GetMapping("getByJobAdvertisementsId")
     public ResponseEntity<?> getByJobAdvertisementsId(@RequestParam int id){
-        return ResponseEntity.ok(_jobAdvertisementRequireSkillService.getByJobAdvertisementsId(id));
+        return ResponseEntity.ok(_jobAdvertisementRequireSkillService.getByJobAdvertisementId(id));
     }
 }

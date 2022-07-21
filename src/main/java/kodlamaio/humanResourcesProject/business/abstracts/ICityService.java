@@ -3,6 +3,7 @@ package kodlamaio.humanResourcesProject.business.abstracts;
 import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
 import kodlamaio.humanResourcesProject.core.utilities.results.Result;
 import kodlamaio.humanResourcesProject.entities.concretes.City;
+import lombok.Data;
 
 import java.util.List;
 
@@ -12,4 +13,5 @@ public interface ICityService {
     Result delete(City city);
 
     DataResult<List<City>> getAll();
+    DataResult<City> getById(int id);
 }

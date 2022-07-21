@@ -45,7 +45,7 @@ public class JobAdvertisementRequireSkillManager implements IJobAdvertisementReq
     }
 
     @Override
-    public DataResult<List<JobAdvertisementRequireSkill>> getByJobAdvertisementsId(int id) {
+    public DataResult<List<JobAdvertisementRequireSkill>> getByJobAdvertisementId(int id) {
         return new SuccessDataResult<List<JobAdvertisementRequireSkill>>(_jobAdvertisementRequireSkillDao.findByJobAdvertisementsId(id));
     }
 }

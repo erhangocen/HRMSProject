@@ -13,6 +13,6 @@ public interface IJobAdvertisementRequireSkillService {
     Result delete(JobAdvertisementRequireSkill jobAdvertisementRequireSkill);
     DataResult<List<JobAdvertisementRequireSkill>> getAll();
     DataResult<List<JobAdvertisementRequireSkill>> getBySkillId(int id);
-    DataResult<List<JobAdvertisementRequireSkill>> getByJobAdvertisementsId(int id);
+    DataResult<List<JobAdvertisementRequireSkill>> getByJobAdvertisementId(int id);
 
 }

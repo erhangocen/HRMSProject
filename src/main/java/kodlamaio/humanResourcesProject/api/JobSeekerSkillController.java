@@ -14,6 +14,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/jobSeekerSkill/")
+@CrossOrigin
 public class JobSeekerSkillController {
     private IJobSeekerSkillService _jobSeekerSkillService;
 
