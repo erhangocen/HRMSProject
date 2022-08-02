@@ -11,4 +11,5 @@ public interface ILanguageService {
     Result delete(Language language);
 
     DataResult<List<Language>> getAll();
+    DataResult<List<Language>> getNoHaveLanguages(int userId);
 }

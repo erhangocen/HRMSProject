@@ -1,9 +1,11 @@
 package kodlamaio.humanResourcesProject.business.concretes;
 
 import kodlamaio.humanResourcesProject.business.abstracts.IJobPositionService;
+import kodlamaio.humanResourcesProject.business.abstracts.IJobSeekerPositionService;
 import kodlamaio.humanResourcesProject.core.utilities.results.*;
 import kodlamaio.humanResourcesProject.dataAccess.abstracts.IJobPositionDao;
 import kodlamaio.humanResourcesProject.entities.concretes.JobPosition;
+import kodlamaio.humanResourcesProject.entities.concretes.JobSeekerPosition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +16,13 @@ import java.util.List;
 public class JobPositionManager implements IJobPositionService {
 
     private IJobPositionDao _jobPositionDao;
+    private IJobSeekerPositionService _jobSeekerPositionService;
 
     @Autowired
-    public JobPositionManager(IJobPositionDao jobPositionDao) {
+    public JobPositionManager(IJobPositionDao jobPositionDao, IJobSeekerPositionService jobSeekerPositionService) {
         super();
         _jobPositionDao = jobPositionDao;
+        _jobSeekerPositionService = jobSeekerPositionService;
     }
 
     @Override
@@ -48,6 +52,18 @@ public class JobPositionManager implements IJobPositionService {
     @Override
     public DataResult<List<JobPosition>> getAll() {
         return new SuccessDataResult<List<JobPosition>>(_jobPositionDao.findAll(),"Positions listed");
+    }
+
+    @Override
+    public DataResult<List<JobPosition>> getNoHavePositions(int userId) {
+        List<JobSeekerPosition> positions = _jobSeekerPositionService.getByUserId(userId).getData();
+        List<JobPosition> havePositions = new ArrayList<>();;
+        for (JobSeekerPosition position : positions){
+            havePositions.add(position.getJobPosition());
+        }
+        List<JobPosition> noHavePositions = _jobPositionDao.findAll();
+        noHavePositions.removeAll(havePositions);
+        return new SuccessDataResult<List<JobPosition>>(noHavePositions);
     }
 
     private Result checkJobPositionName(JobPosition jobPosition){

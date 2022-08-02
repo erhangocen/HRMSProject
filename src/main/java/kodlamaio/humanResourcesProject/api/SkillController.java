@@ -1,16 +1,12 @@
 package kodlamaio.humanResourcesProject.api;
 
 import kodlamaio.humanResourcesProject.business.abstracts.ISkillService;
-import kodlamaio.humanResourcesProject.core.utilities.results.DataResult;
-import kodlamaio.humanResourcesProject.core.utilities.results.Result;
-import kodlamaio.humanResourcesProject.entities.concretes.JobSeekerSkill;
 import kodlamaio.humanResourcesProject.entities.concretes.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @RestController
 @RequestMapping("/api/skill/")
@@ -26,6 +22,11 @@ public class SkillController {
     @GetMapping("getAll")
     public ResponseEntity<?> getAll(){
         return ResponseEntity.ok(_skillService.getAll());
+    }
+
+    @GetMapping("getNoHaveSkills")
+    public ResponseEntity<?> getNoHaveSkills(@RequestParam int userId){
+        return ResponseEntity.ok(_skillService.getNoHaveUser(userId));
     }
 
     @PostMapping("add")

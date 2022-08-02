@@ -29,6 +29,11 @@ public class JobPositionsController {
         return ResponseEntity.ok(_jobPositionService.getAll());
     }
 
+    @GetMapping("getNoHavePositions")
+    public ResponseEntity<?> getNoHavePositions(@RequestParam int userId){
+        return ResponseEntity.ok(_jobPositionService.getNoHavePositions(userId));
+    }
+
     @PostMapping("add")
     public ResponseEntity<?> add(@Valid @RequestBody JobPosition jobPosition){
         return ResponseEntity.ok(_jobPositionService.add(jobPosition));

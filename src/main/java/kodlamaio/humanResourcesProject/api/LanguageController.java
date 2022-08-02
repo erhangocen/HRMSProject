@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/language/")
+@CrossOrigin
 public class LanguageController {
 
     private ILanguageService _languageService;
@@ -22,6 +23,11 @@ public class LanguageController {
     @GetMapping("getAll")
     public ResponseEntity<?> getAll(){
         return ResponseEntity.ok(_languageService.getAll());
+    }
+
+    @GetMapping("getNoHaveLanguages")
+    public ResponseEntity<?> getNoHaveLanguages(@RequestParam int userId){
+        return ResponseEntity.ok(_languageService.getNoHaveLanguages(userId));
     }
 
     @PostMapping("add")

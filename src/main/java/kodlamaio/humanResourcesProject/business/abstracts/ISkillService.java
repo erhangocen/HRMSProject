@@ -10,4 +10,5 @@ public interface ISkillService {
     Result add(Skill skill);
     Result delete(Skill skill);
     DataResult<List<Skill>> getAll();
+    DataResult<List<Skill>> getNoHaveUser(int userId);
 }
