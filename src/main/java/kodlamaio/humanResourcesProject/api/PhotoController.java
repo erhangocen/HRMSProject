@@ -26,7 +26,7 @@ public class PhotoController {
     }
 
     @PostMapping("add")
-    public ResponseEntity<?> add(@Valid @RequestParam(value = "id") int userId,@Valid @RequestParam(value = "imageFile") MultipartFile photoFile) {
+    public ResponseEntity<?> add(@Valid @RequestParam(value = "userId") int userId,@Valid @RequestParam(value = "imageFile") MultipartFile photoFile) {
         return ResponseEntity.ok(_photoService.update(userId,photoFile));
     }
 
